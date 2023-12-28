@@ -51,7 +51,8 @@ Sprite.prototype = {
     var keys = Object.keys(self._spriteMap);
 
     keys.forEach(function(key) {
-      window[key]?.addEventListener('click', function() {
+      
+      document.getElementById(key)?.addEventListener('click', function() {
         self.play(key);
       }, false);
     });
@@ -89,41 +90,51 @@ Sprite.prototype = {
   playAll: function(index = 0, delay, repeat, repeated = 0) {
     var self = this;
     return new Promise((resolve) => {
+      var resolePrmoise = false;
       if (repeat && repeated + 1 >= repeat && index + 1 >= Object.keys(self._spriteMap).length) { 
         resolve('Done');
+        console.log('done repeat');
       } else if (!repeat && index + 1 >= Object.keys(self._spriteMap).length) {
-        resolve('Done');
+        // resolve('Done');
+        console.log('done index');
+        resolePrmoise = true;
       }
-        var id = self.play(Object.keys(self._spriteMap)[index]);
-        self.sound.once('end', function() {
-          if (repeat && repeated + 1 < repeat) { // + 1 because it's played once before the end callback
-            if (delay) {
-              setTimeout(() => {
-                // no indx + 1 to repeat
-                self.playAll(index, delay, repeat, repeated + 1).then((result) => {
-                  resolve(result);
-                });
-              }, delay);
-            } else {
+      document.querySelector('.playing-sprite')?.classList?.remove('playing-sprite');
+      document.getElementById(Object.keys(self._spriteMap)[index])?.classList?.add('playing-sprite');
+      
+      var id = self.play(Object.keys(self._spriteMap)[index]);
+      self.sound.once('end', function() {
+        if (resolePrmoise) {
+          resolve();
+        }
+        if (repeat && repeated + 1 < repeat) { // + 1 because it's played once before the end callback
+          if (delay) {
+            setTimeout(() => {
+              // no indx + 1 to repeat
               self.playAll(index, delay, repeat, repeated + 1).then((result) => {
                 resolve(result);
               });
-            }
-          } else if (index + 1 < Object.keys(self._spriteMap).length) {
-            if (delay) {
-              setTimeout(() => {
-                // index + 1 for next sprit
-                self.playAll(index + 1, delay, repeat, 0).then((result) => {
-                  resolve(result);
-                });
-              }, delay);
-            } else {
+            }, delay);
+          } else {
+            self.playAll(index, delay, repeat, repeated + 1).then((result) => {
+              resolve(result);
+            });
+          }
+        } else if (index + 1 < Object.keys(self._spriteMap).length) {
+          if (delay) {
+            setTimeout(() => {
+              // index + 1 for next sprit
               self.playAll(index + 1, delay, repeat, 0).then((result) => {
                 resolve(result);
               });
-            }
+            }, delay);
+          } else {
+            self.playAll(index + 1, delay, repeat, 0).then((result) => {
+              resolve(result);
+            });
           }
-        }, id);
+        }
+      }, id);
       
     });
   },
@@ -166,7 +177,7 @@ Sprite.prototype = {
 };
 
 
-var elms = [
+var spriteMap_1 = [
   'Good morning.',
   'Good evening.',
   'Good night.',
@@ -192,7 +203,8 @@ var elms = [
   'How long have you been in Israel?',
   'I\'ve been in Israel for one and a half years.',
   'How long do you intend to stay in Israel?',
-
+];
+var spriteMap_2 = [
   'I\'m staying in Israel for two years.',
   'I need to go now.',
   'How old are you?',
@@ -218,6 +230,8 @@ var elms = [
   'I don\'t feel well.',
   'I\'m thirsty.',
   'I\'m hot.',
+];
+var spriteMap_3 = [
   'I\'m cold.',
   'I\'m bored.',
   'Good luck. (literally: with success)',
@@ -243,6 +257,8 @@ var elms = [
   'What\'s your email address?',
   'Tell me.',
   'What time do you open?',
+];
+var spriteMap_4 = [
   'What time do you close?',
   'Could you take my picture, please?',
   'It\'s too expensive.',
@@ -270,200 +286,198 @@ var elms = [
   'Same thing.',
   'I need to practice my Hebrew.'
 ];
-var spriteMap = {};
-elms.forEach((item, index) => {
-  spriteMap['sprite' + index] = item;
+var combinedLabels = [
+  ...spriteMap_1, ...spriteMap_2, ...spriteMap_3, ...spriteMap_4
+];
+var spriteMap1 = {};
+var spriteMap2 = {};
+var spriteMap3 = {};
+var spriteMap4 = {};
+spriteMap_1.forEach((item, index) => {
+  spriteMap1['sprite' + index] = item;
+});
+spriteMap_2.forEach((item, index) => {
+  spriteMap2['sprite' + (index + 25)] = item;
+});
+spriteMap_3.forEach((item, index) => {
+  spriteMap3['sprite' + (index + 50)] = item;
+});
+spriteMap_4.forEach((item, index) => {
+  spriteMap4['sprite' + (index + 75)] = item;
 });
 var spritContainer = document.querySelector('.sprites');
-Object.keys(spriteMap).forEach(function(key, index) {
-  var sprit = document.createElement('div');
-  sprit.setAttribute('id', key);
-  sprit.setAttribute('class', 'sprite');
-  sprit.innerHTML = `<div class="sprite-label">${index + 1}. ${spriteMap[key]}</div>`;
-  spritContainer.appendChild(sprit);
-  if ((index + 1) % 25 == 0) {
-    var hr = document.createElement('hr');
-    spritContainer.appendChild(hr);
-  }
-  window[key] = sprit;
-});
+// const combinedSprite = {...spriteMap1, ...spriteMap2, ...spriteMap3, ...spriteMap4};
+debugger
+function addSprites(sprite, offset) {
+  Object.keys(sprite).forEach(function(key, index) {
+    var sprit = document.createElement('div');
+    sprit.setAttribute('id', key);
+    sprit.setAttribute('class', 'sprite');
+    sprit.innerHTML = `<div class="sprite-label">${offset + index + 1}. ${sprite[key]}</div>`;
+    spritContainer.appendChild(sprit);
+    // if ((index + 1) % 25 == 0) {
+    //   var hr = document.createElement('hr');
+    //   spritContainer.appendChild(hr);
+    // }
+    window[key] = sprit;
+  });
+}
+addSprites(spriteMap1, 0);
+addSprites(spriteMap2, 25);
+addSprites(spriteMap3, 50);
+addSprites(spriteMap4, 75);
 
 // Setup our new sprite class and pass in the options.
 
-var sprite = new Sprite({
+var sprite_1 = new Sprite({
   src: ['100_phrases_1-25.mp3'],
   sprite: {
-    [elms[0]]: [0, 4 * 1000],
-    [elms[1]]: [4 * 1000, 5 * 1000],
-    [elms[2]]: [9 * 1000, 5 * 1000],
-    [elms[3]]: [13.7 * 1000, 4.9 * 1000],
-    [elms[4]]: [18 * 1000, 5 * 1000],
-    [elms[5]]: [23 * 1000, 5 * 1000],
+    [combinedLabels[0]]: [0, 4 * 1000],
+    [combinedLabels[1]]: [4 * 1000, 5 * 1000],
+    [combinedLabels[2]]: [9 * 1000, 5 * 1000],
+    [combinedLabels[3]]: [13.7 * 1000, 4.9 * 1000],
+    [combinedLabels[4]]: [18 * 1000, 5 * 1000],
+    [combinedLabels[5]]: [23 * 1000, 5 * 1000],
 
-    [elms[6]]: [28 * 1000, 5 * 1000],
-    [elms[7]]: [38 * 1000, 5 * 1000],
-    [elms[8]]: [42 * 1000, 5 * 1000],
-    [elms[9]]: [56.5 * 1000, 5 * 1000],
-    [elms[10]]: [61.7 * 1000, 5 * 1000],
-    [elms[11]]: [66.8 * 1000, 7 * 1000],
-    [elms[12]]: [82 * 1000, 9 * 1000],
-    [elms[13]]: [91 * 1000, 6 * 1000],
-    [elms[14]]: [103 * 1000, 7 * 1000],
-    [elms[15]]: [116 * 1000, 5 * 1000],
-    [elms[16]]: [127 * 1000, 4 * 1000],
-    [elms[17]]: [146 * 1000, 2 * 1000],
-    [elms[18]]: [152.8 * 1000, 5 * 1000],
-    [elms[19]]: [162 * 1000, 7 * 1000],
-    [elms[20]]: [169 * 1000, 5 * 1000],
-    [elms[21]]: [180 * 1000, 6 * 1000],
-    [elms[22]]: [194 * 1000, 7 * 1000],
+    [combinedLabels[6]]: [28 * 1000, 5 * 1000],
+    [combinedLabels[7]]: [38 * 1000, 5 * 1000],
+    [combinedLabels[8]]: [42 * 1000, 5 * 1000],
+    [combinedLabels[9]]: [56.5 * 1000, 5 * 1000],
+    [combinedLabels[10]]: [61.7 * 1000, 5 * 1000],
+    [combinedLabels[11]]: [66.8 * 1000, 7 * 1000],
+    [combinedLabels[12]]: [82 * 1000, 9 * 1000],
+    [combinedLabels[13]]: [91 * 1000, 6 * 1000],
+    [combinedLabels[14]]: [103 * 1000, 7 * 1000],
+    [combinedLabels[15]]: [116 * 1000, 5 * 1000],
+    [combinedLabels[16]]: [127 * 1000, 4 * 1000],
+    [combinedLabels[17]]: [146 * 1000, 2 * 1000],
+    [combinedLabels[18]]: [152.8 * 1000, 5 * 1000],
+    [combinedLabels[19]]: [162 * 1000, 7 * 1000],
+    [combinedLabels[20]]: [169 * 1000, 5 * 1000],
+    [combinedLabels[21]]: [180 * 1000, 6 * 1000],
+    [combinedLabels[22]]: [194 * 1000, 7 * 1000],
 // new file
-    // [elms[23]]: [13.7 * 1000, 4.9 * 1000],
-    // [elms[24]]: [18 * 1000, 5 * 1000],
-    // [elms[25]]: [23 * 1000, 5 * 1000],
+    [combinedLabels[23]]: [194 * 1000, 1 * 1000],
+    [combinedLabels[24]]: [194 * 1000, 1 * 1000],
+    [combinedLabels[25]]: [194 * 1000, 1 * 1000],
   },
-  spriteMap: spriteMap
+  spriteMap: spriteMap1
 });
 
 var sprite_2 = new Sprite({
   src: ['100_phrases_26-50.mp3'],
   sprite: {
-    [elms[25]]: [0, 8 * 1000],
-    [elms[26]]: [16 * 1000, 7 * 1000],
-    [elms[27]]: [31 * 1000, 5 * 1000],
+    [combinedLabels[25]]: [0, 8 * 1000],
+    [combinedLabels[26]]: [16 * 1000, 7 * 1000],
+    [combinedLabels[27]]: [31 * 1000, 5 * 1000],
 
-    [elms[28]]: [41 * 1000, 2 * 1000],
-    [elms[29]]: [47 * 1000, 9 * 1000],
-    [elms[30]]: [57 * 1000, 5 * 1000],
+    [combinedLabels[28]]: [41 * 1000, 2 * 1000],
+    [combinedLabels[29]]: [47 * 1000, 9 * 1000],
+    [combinedLabels[30]]: [57 * 1000, 5 * 1000],
 
-    [elms[31]]: [67 * 1000, 5 * 1000],
-    [elms[32]]: [78 * 1000, 5 * 1000],
-    [elms[33]]: [84 * 1000, 5 * 1000],
-    [elms[34]]: [89.5 * 1000, 7 * 1000],
-    [elms[35]]: [96 * 1000, 5 * 1000],
-    [elms[36]]: [108 * 1000, 5 * 1000],
+    [combinedLabels[31]]: [67 * 1000, 5 * 1000],
+    [combinedLabels[32]]: [78 * 1000, 5 * 1000],
+    [combinedLabels[33]]: [84 * 1000, 5 * 1000],
+    [combinedLabels[34]]: [89.5 * 1000, 7 * 1000],
+    [combinedLabels[35]]: [96 * 1000, 5 * 1000],
+    [combinedLabels[36]]: [108 * 1000, 5 * 1000],
 
-    [elms[37]]: [114 * 1000, 5 * 1000],
-    [elms[38]]: [125 * 1000, 5 * 1000],
-    [elms[39]]: [135 * 1000, 7 * 1000],
-    [elms[40]]: [150 * 1000, 4 * 1000],
+    [combinedLabels[37]]: [114 * 1000, 5 * 1000],
+    [combinedLabels[38]]: [125 * 1000, 5 * 1000],
+    [combinedLabels[39]]: [135 * 1000, 7 * 1000],
+    [combinedLabels[40]]: [150 * 1000, 4 * 1000],
 
-    [elms[41]]: [154 * 1000, 4 * 1000],
-    [elms[42]]: [158 * 1000, 4 * 1000],
-    [elms[43]]: [162 * 1000, 5 * 1000],
-    [elms[44]]: [168 * 1000, 4 * 1000],
-    [elms[45]]: [177.5 * 1000, 4 * 1000],
-    [elms[46]]: [187 * 1000, 4 * 1000],
-    [elms[47]]: [196.7 * 1000, 5 * 1000],
-    [elms[48]]: [209 * 1000, 4 * 1000],
-    [elms[49]]: [218.5 * 1000, 4 * 1000],
+    [combinedLabels[41]]: [154 * 1000, 4 * 1000],
+    [combinedLabels[42]]: [158 * 1000, 4 * 1000],
+    [combinedLabels[43]]: [162 * 1000, 5 * 1000],
+    [combinedLabels[44]]: [168 * 1000, 4 * 1000],
+    [combinedLabels[45]]: [177.5 * 1000, 4 * 1000],
+    [combinedLabels[46]]: [187 * 1000, 4 * 1000],
+    [combinedLabels[47]]: [196.7 * 1000, 5 * 1000],
+    [combinedLabels[48]]: [209 * 1000, 4 * 1000],
+    [combinedLabels[49]]: [218.5 * 1000, 4 * 1000],
   },
-  spriteMap: spriteMap
+  spriteMap: spriteMap2
 });
 
 var sprite_3 = new Sprite({
   src: ['100_phrases_51-75.mp3'],
   sprite: {
-    [elms[50]]: [0, 4 * 1000],
-    [elms[51]]: [4 * 1000, 4 * 1000],
-    [elms[52]]: [15 * 1000, 2 * 1000],
+    [combinedLabels[50]]: [0, 4 * 1000],
+    [combinedLabels[51]]: [4 * 1000, 4 * 1000],
+    [combinedLabels[52]]: [15 * 1000, 2 * 1000],
 
-    [elms[53]]: [16.8 * 1000, 5 * 1000],
-    [elms[54]]: [23 * 1000, 2 * 1000],
-    [elms[55]]: [25 * 1000, 4 * 1000],
+    [combinedLabels[53]]: [16.8 * 1000, 5 * 1000],
+    [combinedLabels[54]]: [23 * 1000, 2 * 1000],
+    [combinedLabels[55]]: [25 * 1000, 4 * 1000],
 
-    [elms[56]]: [30 * 1000, 3.5 * 1000],
-    [elms[57]]: [34 * 1000, 7 * 1000],
-    [elms[58]]: [41 * 1000, 6 * 1000],
-    [elms[59]]: [47 * 1000, 6 * 1000],
+    [combinedLabels[56]]: [30 * 1000, 3.5 * 1000],
+    [combinedLabels[57]]: [34 * 1000, 7 * 1000],
+    [combinedLabels[58]]: [41 * 1000, 6 * 1000],
+    [combinedLabels[59]]: [47 * 1000, 6 * 1000],
 
-    [elms[60]]: [53 * 1000, 5 * 1000],
-    [elms[61]]: [58 * 1000, 10 * 1000],
+    [combinedLabels[60]]: [53 * 1000, 5 * 1000],
+    [combinedLabels[61]]: [58 * 1000, 10 * 1000],
 
-    [elms[62]]: [69 * 1000, 5 * 1000],
-    [elms[63]]: [79.7 * 1000, 4 * 1000],
-    [elms[64]]: [84 * 1000, 5 * 1000],
-    [elms[65]]: [89 * 1000, 5 * 1000],
+    [combinedLabels[62]]: [69 * 1000, 5 * 1000],
+    [combinedLabels[63]]: [79.7 * 1000, 4 * 1000],
+    [combinedLabels[64]]: [84 * 1000, 5 * 1000],
+    [combinedLabels[65]]: [89 * 1000, 5 * 1000],
 
-    [elms[66]]: [94 * 1000, 7 * 1000],
-    [elms[67]]: [101.7 * 1000, 5 * 1000],
+    [combinedLabels[66]]: [94 * 1000, 7 * 1000],
+    [combinedLabels[67]]: [101.7 * 1000, 5 * 1000],
 
-    [elms[68]]: [107 * 1000, 5 * 1000],
-    [elms[69]]: [112 * 1000, 5 * 1000],
-    [elms[70]]: [117 * 1000, 7.4 * 1000],
-    [elms[71]]: [133 * 1000, 7.5 * 1000],
-    [elms[72]]: [148 * 1000, 6 * 1000],
-    [elms[73]]: [160 * 1000, 4 * 1000],
-    [elms[74]]: [169 * 1000, 8 * 1000],
+    [combinedLabels[68]]: [107 * 1000, 5 * 1000],
+    [combinedLabels[69]]: [112 * 1000, 5 * 1000],
+    [combinedLabels[70]]: [117 * 1000, 7.4 * 1000],
+    [combinedLabels[71]]: [133 * 1000, 7.5 * 1000],
+    [combinedLabels[72]]: [148 * 1000, 6 * 1000],
+    [combinedLabels[73]]: [160 * 1000, 4 * 1000],
+    [combinedLabels[74]]: [169 * 1000, 8 * 1000],
   },
-  spriteMap: spriteMap
+  spriteMap: spriteMap3
 });
 
 var sprite_4 = new Sprite({
   src: ['100_phrases_76-100.mp3'],
   sprite: {
-    [elms[75]]: [0, 6 * 1000],
-    [elms[76]]: [6 * 1000, 7 * 1000],
-    [elms[77]]: [21 * 1000, 5 * 1000],
+    [combinedLabels[75]]: [0, 6 * 1000],
+    [combinedLabels[76]]: [6 * 1000, 7 * 1000],
+    [combinedLabels[77]]: [21 * 1000, 5 * 1000],
 
-    [elms[78]]: [26 * 1000, 5 * 1000],
-    [elms[79]]: [37 * 1000, 5 * 1000],
-    [elms[80]]: [42 * 1000, 5.7 * 1000],
+    [combinedLabels[78]]: [26 * 1000, 5 * 1000],
+    [combinedLabels[79]]: [37 * 1000, 5 * 1000],
+    [combinedLabels[80]]: [42 * 1000, 5.7 * 1000],
 
-    [elms[81]]: [53.8 * 1000, 4 * 1000],
-    [elms[82]]: [62 * 1000, 5 * 1000],
+    [combinedLabels[81]]: [53.8 * 1000, 4 * 1000],
+    [combinedLabels[82]]: [62 * 1000, 5 * 1000],
 
-    [elms[83]]: [72 * 1000, 5 * 1000],
-    [elms[84]]: [83 * 1000, 5 * 1000],
+    [combinedLabels[83]]: [72 * 1000, 5 * 1000],
+    [combinedLabels[84]]: [83 * 1000, 5 * 1000],
 
-    [elms[85]]: [89 * 1000, 7 * 1000],
-    [elms[86]]: [97 * 1000, 6 * 1000],
+    [combinedLabels[85]]: [89 * 1000, 7 * 1000],
+    [combinedLabels[86]]: [97 * 1000, 6 * 1000],
 
-    [elms[87]]: [103 * 1000, 5 * 1000],
-    [elms[88]]: [108 * 1000, 8 * 1000],
-    [elms[89]]: [127 * 1000, 6 * 1000],
-    [elms[90]]: [140 * 1000, 5 * 1000],
+    [combinedLabels[87]]: [103 * 1000, 5 * 1000],
+    [combinedLabels[88]]: [108 * 1000, 8 * 1000],
+    [combinedLabels[89]]: [127 * 1000, 6 * 1000],
+    [combinedLabels[90]]: [140 * 1000, 5 * 1000],
 
-    [elms[91]]: [145.5 * 1000, 4 * 1000],
-    [elms[92]]: [153.8 * 1000, 5.6 * 1000],
+    [combinedLabels[91]]: [145.5 * 1000, 4 * 1000],
+    [combinedLabels[92]]: [153.8 * 1000, 5.6 * 1000],
 
-    [elms[93]]: [166.5 * 1000, 7.4 * 1000],
-    [elms[94]]: [174.5 * 1000, 4.8 * 1000],
-    [elms[95]]: [180 * 1000, 4.3 * 1000],
-    [elms[96]]: [184.3 * 1000, 4 * 1000],
-    [elms[97]]: [189 * 1000, 5 * 1000],
-    [elms[98]]: [195 * 1000, 4 * 1000],
-    [elms[99]]: [199.8 * 1000, 5 * 1000],
-    [elms[100]]: [205 * 1000, 7 * 1000],
+    [combinedLabels[93]]: [166.5 * 1000, 7.4 * 1000],
+    [combinedLabels[94]]: [174.5 * 1000, 4.8 * 1000],
+    [combinedLabels[95]]: [180 * 1000, 4.3 * 1000],
+    [combinedLabels[96]]: [184.3 * 1000, 4 * 1000],
+    [combinedLabels[97]]: [189 * 1000, 5 * 1000],
+    [combinedLabels[98]]: [195 * 1000, 4 * 1000],
+    [combinedLabels[99]]: [199.8 * 1000, 5 * 1000],
+    [combinedLabels[100]]: [205 * 1000, 7 * 1000],
   },
-  spriteMap: spriteMap
+  spriteMap: spriteMap4
 });
 
-// var sprit = document.createElement('div');
-// sprit.setAttribute('id', 'stupid');
-// sprit.setAttribute('class', 'sprite');
-// sprit.innerHTML = `<div class="sprite-label">stupid</div>`;
-// spritContainer.appendChild(sprit);
-// window['stupid'] = sprit;
-
-// sprit = document.createElement('div');
-// sprit.setAttribute('id', 'dumb');
-// sprit.setAttribute('class', 'sprite');
-// sprit.innerHTML = `<div class="sprite-label">dumb</div>`;
-// spritContainer.appendChild(sprit);
-// window['dumb'] = sprit;
-
-// var sprite2 = new Sprite({
-//   src: ['stupid.mp3'],
-//   sprite: {
-//     ['stupid']: [0, .8 * 1000],
-//     ['dumb']: [1 * 1000, 5 * 1000],
-//   },
-//   spriteMap: {
-//     'stupid': 'stupid',
-//     'dumb': 'dumb'
-//   }
-// });
 function addAudioSentances(name, sentences) {
   var spriteMap = {};
   Object.keys(sentences).forEach((key) => {
@@ -500,13 +514,13 @@ function addAudio (name) {
   });
 }
 
-var sprite2 = addAudioSentances('stupid', {
-  'stupid': [0, .8 * 1000],
+var sprite_5 = addAudioSentances('stupid', {
+  'stupid': [0, .9 * 1000],
   'dumb': [1 * 1000, 5 * 1000],
 });
 
-var sprite5 = addAudioSentances('wait wait', {
-  'I saw it with my own eyes': [0, 1.4 * 1000],
+var sprite_6 = addAudioSentances('wait wait', {
+  'I saw it with my own eyes': [0, 1.34 * 1000],
   'all you do is killing': [1.4 * 1000, 1.5 * 1000],
   'what are you doing here': [3 * 1000, 1.3 * 1000],
   'lier': [4.3 * 1000, .8 * 1000],
@@ -514,19 +528,9 @@ var sprite5 = addAudioSentances('wait wait', {
   'wait wait': [6 * 1000, 1 * 1000],
 });
 
-var s3 = addAudio('smart');
-var s4 = addAudio('sure sure');
+var sprite_7 = addAudio('smart');
+var sprite_8 = addAudio('sure sure');
 
-// wait wait.mp3
-// sprite.playAll(0, 1000, 2)
-
-// sprite2.playAll(0, 500, 2).then(() => {
-//   setTimeout(() => {
-//     s3.playAll(0, 100, 2).then(() => {
-//       console.log('done');
-//     });
-//   }, 1000);
-// });
 
 function playAll() {
   document.querySelectorAll('.sprite > .sprite-label').forEach((item, index) => {
@@ -534,4 +538,27 @@ function playAll() {
         item.click();
     }, index * 6000);
   })
+}
+
+var spritesArray = [
+  // 'sprite_5', 'sprite_6', 'sprite_7', 
+  'sprite_5', 'sprite_6', 'sprite_7', 'sprite_8',  
+  'sprite_3', 'sprite_4', 'sprite_1', 'sprite_2', 
+
+]
+function playSprits(sprite, index, delay) {
+  debugger
+  if (index >= sprite.length) {
+    return;
+  }
+  window[sprite[index]].playAll(0, 1000).then(() => {
+    setTimeout(() => {
+      debugger
+      playSprits(sprite, index + 1, 2000);
+    }, delay);
+  });
+}
+
+function playAll2() {
+  playSprits(spritesArray, 0, 500);
 }
