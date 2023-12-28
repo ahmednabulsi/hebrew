@@ -125,10 +125,7 @@ body {
   }
 }
 
-#sprite50 {
-  background-color: red;
-}
-
-#sprite94 {
-  background-color: red;
+.playing-sprite {
+  background-color: #246eaa;
+  color: black;
 }
