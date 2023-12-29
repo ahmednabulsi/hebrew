@@ -495,7 +495,7 @@ function addAudioSentances(name, sentences) {
     spriteMap: spriteMap,
   });
 }
-function addAudio (name) {
+function addAudio (name, time = 1) {
   var sprit = document.createElement('div');
   sprit.setAttribute('id', name);
   sprit.setAttribute('class', 'sprite');
@@ -506,7 +506,7 @@ function addAudio (name) {
   return new Sprite({
     src: [name + '.mp3'],
     sprite: {
-      [name]: [0, 1 * 1000],
+      [name]: [0, time * 1000],
     },
     spriteMap: {
       [name]: name
@@ -520,9 +520,9 @@ var sprite_5 = addAudioSentances('stupid', {
 });
 
 var sprite_6 = addAudioSentances('wait wait', {
-  'I saw it with my own eyes': [0, 1.34 * 1000],
+  'I saw it with my own eyes': [0, 1.31 * 1000],
   'all you do is killing': [1.4 * 1000, 1.5 * 1000],
-  'what are you doing here': [3 * 1000, 1.3 * 1000],
+  'what are you doing here': [3 * 1000, 1.25 * 1000],
   'lier': [4.3 * 1000, .8 * 1000],
   'lies': [5.2 * 1000, .7 * 1000],
   'wait wait': [6 * 1000, 1 * 1000],
@@ -530,6 +530,10 @@ var sprite_6 = addAudioSentances('wait wait', {
 
 var sprite_7 = addAudio('smart');
 var sprite_8 = addAudio('sure sure');
+var sprite_9 = addAudio('I can not read', 2);
+var sprite_10 = addAudio('I am sorry', 2);
+var sprite_11 = addAudio('do not know what are you talking about', 2);
+var sprite_12 = addAudio('what do you mean', 2);
 
 
 function playAll() {
@@ -542,7 +546,7 @@ function playAll() {
 
 var spritesArray = [
   // 'sprite_5', 'sprite_6', 'sprite_7', 
-  'sprite_5', 'sprite_6', 'sprite_7', 'sprite_8',  
+  'sprite_12','sprite_11','sprite_10', 'sprite_9', 'sprite_5', 'sprite_6', 'sprite_7', 'sprite_8',  
   'sprite_3', 'sprite_4', 'sprite_1', 'sprite_2', 
 
 ]
