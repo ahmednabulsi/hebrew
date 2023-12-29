@@ -331,6 +331,7 @@ addSprites(spriteMap4, 75);
 
 var sprite_1 = new Sprite({
   src: ['100_phrases_1-25.mp3'],
+  buffer: true,
   sprite: {
     [combinedLabels[0]]: [0, 4 * 1000],
     [combinedLabels[1]]: [4 * 1000, 5 * 1000],
@@ -366,6 +367,7 @@ var sprite_1 = new Sprite({
 
 var sprite_2 = new Sprite({
   src: ['100_phrases_26-50.mp3'],
+  buffer: true,
   sprite: {
     [combinedLabels[25]]: [0, 8 * 1000],
     [combinedLabels[26]]: [16 * 1000, 7 * 1000],
@@ -402,6 +404,7 @@ var sprite_2 = new Sprite({
 
 var sprite_3 = new Sprite({
   src: ['100_phrases_51-75.mp3'],
+  buffer: true,
   sprite: {
     [combinedLabels[50]]: [0, 4 * 1000],
     [combinedLabels[51]]: [4 * 1000, 4 * 1000],
@@ -440,6 +443,7 @@ var sprite_3 = new Sprite({
 
 var sprite_4 = new Sprite({
   src: ['100_phrases_76-100.mp3'],
+  buffer: true,
   sprite: {
     [combinedLabels[75]]: [0, 6 * 1000],
     [combinedLabels[76]]: [6 * 1000, 7 * 1000],
@@ -491,6 +495,7 @@ function addAudioSentances(name, sentences) {
   });
   return new Sprite({
     src: [name + '.mp3'],
+    buffer: true,
     sprite: sentences,
     spriteMap: spriteMap,
   });
@@ -505,6 +510,7 @@ function addAudio (name, time = 1) {
   
   return new Sprite({
     src: [name + '.mp3'],
+    buffer: true,
     sprite: {
       [name]: [0, time * 1000],
     },
@@ -555,6 +561,7 @@ function playSprits(sprite, index, delay) {
   if (index >= sprite.length) {
     return;
   }
+  currentAudio = window[sprite[index]];
   window[sprite[index]].playAll(0, 1000).then(() => {
     setTimeout(() => {
       debugger
@@ -562,7 +569,14 @@ function playSprits(sprite, index, delay) {
     }, delay);
   });
 }
-
+var currentAudio;
 function playAll2() {
+  currentAudio?.sound?.stop();
   playSprits(spritesArray, 0, 500);
+}
+function pauseAudio() {
+  currentAudio?.sound?.pause();
+}
+function resumeAudio() {
+  currentAudio?.sound?.play();
 }
