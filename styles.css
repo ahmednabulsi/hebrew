@@ -56,7 +56,17 @@ body {
   top: 0;
   left: 0;
 }
-
+.fixed-toolbar {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 50px;
+  padding: 5px 20px;
+  display: flex;
+    align-items: center;
+    background: #bab38b;
+    z-index: 2;
+}
 /* Sprites */
 .sprites {
   display: flex;

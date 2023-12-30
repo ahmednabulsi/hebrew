@@ -178,113 +178,114 @@ Sprite.prototype = {
 
 
 var spriteMap_1 = [
-  'Good morning.',
-  'Good evening.',
-  'Good night.',
-  'Thank you very much.',
-  'You\'re welcome.',
-  'Let\'s go.',
-  'How are you?',
-  'What\'s up?',
-  'What\'s going on?',
-  'I\'m fine.',
-  'Nice to meet you.',
-  'I speak a little Hebrew.',
-  'Please correct my Hebrew mistakes.',
-  'I don\'t understand.',
-  'Could you repeat that?',
-  'What did you say?',
-  'What\'s your name?',
-  'My name is…',
-  'Where are you from?',
-  'I\'m from the US.',
-  'Where do you live?',
-  'I live in Tel Aviv.',
-  'How long have you been in Israel?',
-  'I\'ve been in Israel for one and a half years.',
-  'How long do you intend to stay in Israel?',
+  "Good morning.  בוקר טוב.",
+"Good evening.  ערב טוב.",
+"Good night.  לילה טוב.",
+"Thank you very much.  תודה רבה.",
+"You're welcome.  על לא דבר.",
+"Let's go.  בוא נלך.",
+"How are you?  מה שלומך?",
+"What's up?  מה נשמע?",
+"What's going on?  מה קורה?",
+"I'm fine.  אני בסדר.",
+"Nice to meet you.  נעים מאוד.",
+"I speak a little Hebrew.  אני מדבר קצת עברית.",
+"Please correct my Hebrew mistakes.  תקן בבקשה את הטעויות שלי בעברית.",
+"I don't understand.  אני לא מבין.",
+"Could you repeat that?  אתה יכול לחזור על זה?",
+"What did you say?  מה אמרת?",
+"What's your name?  מה שמך?",
+"My name is…  שמי...",
+"Where are you from?  מאיפה אתה?",
+"I'm from the US.  אני מארצות הברית.",
+"Where do you live?  איפה אתה גר?",
+"I live in Tel Aviv.  אני גר בתל אביב.",
+"How long have you been in Israel?  כמה זמן אתה נמצא בארץ?",
+"I've been in Israel for one and a half years.  אני בארץ שנה וחצי.",
+"How long do you intend to stay in Israel?  כמה זמן אתה מתכוון להישאר בישראל?"
 ];
 var spriteMap_2 = [
-  'I\'m staying in Israel for two years.',
-  'I need to go now.',
-  'How old are you?',
-  'I\'m…years old.',
-  'Are you married?',
-  'I\'m married.',
-  'I\'m single.',
-  'Do you have children?',
-  'We don\'t have any children.',
-  'We have three kids.',
-  'Why are you in Israel?',
-  'I\'m here for ten days.',
-  'I work at…',
-  'I\'m studying…',
-  'When do you go back to the US?',
-  'What is that?',
-  'What\'s wrong?',
-  'It doesn\'t matter.',
-  'I have no idea.',
-  'I\'m tired.',
-  'I\'m hungry.',
-  'I\'m sick.',
-  'I don\'t feel well.',
-  'I\'m thirsty.',
-  'I\'m hot.',
+  "I'm staying in Israel for two years.  אני נשאר בישראל שנתיים.",
+"I need to go now.  אני צריך ללכת עכשיו.",
+"How old are you?  בן כמה אתה?",
+"I'm…years old.  אני בן...",
+"Are you married?  אתה נשוי?",
+"I'm married.  אני נשוי.",
+"I'm single.  אני רווק.",
+"Do you have children?  יש לכם ילדים?",
+"We don't have any children.  אין לנו ילדים.",
+"We have three kids.  יש לנו שלושה ילדים.",
+"Why are you in Israel?  למה אתה בארץ?",
+"I'm here for ten days.  אני פה לעשרה ימים.",
+"I work at…  אני עובד ב...",
+"I'm studying…  אני לומד...",
+"When do you go back to the US?  מתי אתה חוזר לארצות הברית?",
+"What is that?  מה זה?",
+"What's wrong?  מה קרה?",
+"It doesn't matter.  לא משנה.",
+"I have no idea.  אין לי מושג.",
+"I'm tired.  אני עייף.",
+"I'm hungry.  אני רעב.",
+"I'm sick.  אני חולה.",
+"I don't feel well.  אני מרגיש לא טוב.",
+"I'm thirsty.  אני צמא.",
+"I'm hot.  חם לי.",
 ];
 var spriteMap_3 = [
-  'I\'m cold.',
-  'I\'m bored.',
-  'Good luck. (literally: with success)',
-  'Congratulations. (literally: good luck)',
-  'I forgot.',
-  'No problem.',
-  'Don\'t worry.',
-  'Is this the bus to…?',
-  'Is this the train to…?',
-  'Stop here, please. (to taxi driver)',
-  'What time is it?',
-  'Has bus number 123 come by yet?',
-  'I don\'t know.',
-  'Come here.',
-  'Good job/Well done. [all the respect]',
-  'It\'s beautiful here.',
-  'The weather is nice today.',
-  'It\'s very hot today.',
-  'That\'s mine.',
-  'No smoking. (forbidden to smoke)',
-  'I want to go to the beach.',
-  'What\'s your phone number?',
-  'What\'s your email address?',
-  'Tell me.',
-  'What time do you open?',
+  "I'm cold.  קר לי.",
+"I'm bored.  אני משועמם.",
+"Good luck. (literally: with success)  בהצלחה.",
+"Congratulations. (literally: good luck)  מזל טוב.",
+"I forgot.  שכחתי.",
+"No problem.  אין בעיה.",
+"Don't worry.  אל תדאג.",
+"Is this the bus to…?  זה האוטובוס ל...?",
+"Is this the train to…?  זאת הרכבת ל...?",
+"Stop here, please. (to taxi driver)  עצור כאן, בבקשה.",
+"What time is it?  מה השעה?",
+"Has bus number 123 come by yet?  אוטובוס מספר 123 כבר עבר?",
+"I don't know.  אני לא יודע.",
+"Come here.  בוא הנה.",
+"Good job/Well done. [all the respect]  כל הכבוד.",
+"It's beautiful here.  יפה פה.",
+"The weather is nice today.  מזג האוויר נחמד היום.",
+"It's very hot today.  חם מאוד היום.",
+"That's mine.  זה שלי.",
+"No smoking. (forbidden to smoke)  אסור לעשן.",
+"I want to go to the beach.  אני רוצה ללכת לחוף.",
+"What's your phone number?  מה מספר הטלפון שלך?",
+"What's your email address?  מה האימייל שלך?",
+"Tell me.  תגיד לי.",
+"What time do you open?  באיזו שעה אתם פותחים?",
+
 ];
 var spriteMap_4 = [
-  'What time do you close?',
-  'Could you take my picture, please?',
-  'It\'s too expensive.',
-  'I\'m just looking.',
-  'Do you have…? (at a store)',
-  'I\'m (not) Jewish.',
-  'I\'m religious.',
-  'I\'m secular.',
-  'I\'m vegetarian.',
-  'How much does it cost?',
-  'Can I pay by credit card?',
-  'Cash only.',
-  'Is this kosher?',
-  'Want to drink a beer with me this evening?',
-  'Can I help you?',
-  'Are you ready to order?',
-  'Are you ready?',
-  'Do you want something to drink?',
-  'Who has the best hummus in Israel?',
-  'A glass of water please.',
-  'Anything else?',
-  'Check, please.',
-  'Can you break this? (big bill into smaller bills)',
-  'Where\'s the restroom?',
-  'Same thing.',
-  'I need to practice my Hebrew.'
+  "What time do you close?  באיזו שעה אתם סוגרים?",
+"Could you take my picture, please?  אתה יכול לצלם אותי, בבקשה?",
+"It's too expensive.  זה יקר מדי.",
+"I'm just looking.  אני רק מסתכל.",
+"Do you have…? (at a store)  יש לכם...?",
+"I'm (not) Jewish.  אני (לא) יהודי.",
+"I'm religious.  אני דתי.",
+"I'm secular.  אני חילוני.",
+"I'm vegetarian.  אני צמחוני.",
+"How much does it cost?  כמה זה עולה?",
+"Can I pay by credit card?  אפשר לשלם בכרטיס אשראי?",
+"Cash only.  מזומן בלבד.",
+"Is this kosher?  זה כשר?",
+"Want to drink a beer with me this evening?  אתה רוצה לשתות איתי בירה היום בערב?",
+"Can I help you?  אני יכול לעזור לך?",
+"Are you ready to order?  אתם מוכנים להזמין?",
+"Are you ready?  אתה מוכן?",
+"Do you want something to drink?  אתה רוצה לשתות משהו?",
+"Who has the best hummus in Israel?  למי יש את החומוס הכי טוב בארץ?",
+"A glass of water please.  כוס מים בבקשה.",
+"Anything else?  עוד משהו?",
+"Check, please.  חשבון, בבקשה.",
+"Can you break this? (big bill into smaller bills)  אפשר לפרוט?",
+"Where's the restroom?  איפה השירותים?",
+"Same thing.  אותו דבר.",
+"I need to practice my Hebrew.  אני צריך לתרגל את העברית שלי.",
 ];
 var combinedLabels = [
   ...spriteMap_1, ...spriteMap_2, ...spriteMap_3, ...spriteMap_4
@@ -500,11 +501,11 @@ function addAudioSentances(name, sentences) {
     spriteMap: spriteMap,
   });
 }
-function addAudio (name, time = 1) {
+function addAudio (name, label, time = 1) {
   var sprit = document.createElement('div');
   sprit.setAttribute('id', name);
   sprit.setAttribute('class', 'sprite');
-  sprit.innerHTML = `<div class="sprite-label">${name}</div>`;
+  sprit.innerHTML = `<div class="sprite-label">${label || name}</div>`;
   spritContainer.appendChild(sprit);
   window[name] = sprit;
   
@@ -521,26 +522,48 @@ function addAudio (name, time = 1) {
 }
 
 var sprite_5 = addAudioSentances('stupid', {
-  'stupid': [0, .9 * 1000],
-  'dumb': [1 * 1000, 5 * 1000],
+  'stupid אתה טיפש': [0, .9 * 1000],
+  'dumb אתה מטוּמטם': [1 * 1000, 5 * 1000],
 });
 
 var sprite_6 = addAudioSentances('wait wait', {
-  'I saw it with my own eyes': [0, 1.31 * 1000],
-  'all you do is killing': [1.4 * 1000, 1.5 * 1000],
-  'what are you doing here': [3 * 1000, 1.25 * 1000],
-  'lier': [4.3 * 1000, .8 * 1000],
-  'lies': [5.2 * 1000, .7 * 1000],
-  'wait wait': [6 * 1000, 1 * 1000],
+  'I saw it with my own eyes ראית במו עיניי': [0, 1.31 * 1000],
+  'all you do is killing כל מה שאתה עושה להרוג': [1.4 * 1000, 1.5 * 1000],
+  'what are you doing here למה אתה פה': [3 * 1000, 1.25 * 1000],
+  'lier שקרן': [4.3 * 1000, .8 * 1000],
+  'lies שקרים': [5.2 * 1000, .7 * 1000],
+  'wait wait רגע רגע': [6 * 1000, 1 * 1000],
 });
 
-var sprite_7 = addAudio('smart');
-var sprite_8 = addAudio('sure sure');
-var sprite_9 = addAudio('I can not read', 2);
-var sprite_10 = addAudio('I am sorry', 2);
-var sprite_11 = addAudio('do not know what are you talking about', 2);
-var sprite_12 = addAudio('what do you mean', 2);
+var sprite_7 = addAudio('smart','I am smart אני פיקח');
+var sprite_8 = addAudio('sure sure', 'sure sure בטח בטח');
+var sprite_9 = addAudio('I can not read', 'I can not read אני לא יכול לקרוא', 2);
+var sprite_10 = addAudio('I am sorry', 'I am sorry אני מצטער', 2);
+var sprite_11 = addAudio('do not know what are you talking about','idk what are you talking about אני לא יודע מה אתה מדבר', 2);
+var sprite_12 = addAudio('what do you mean','what do you mean מה את מתכוונת', 2);
+var sprite_13 = addAudioSentances('mesc', {
+  'He died for nothing הוא מת לחינם': [0, 1.04 * 1000],
+  'Shoes Yahya נעליים של': [1.2 * 1000, 1.5 * 1000],
+  'Mesage ending. Thanks Friend חברה תודה': [3 * 1000, 1 * 1000],
+});
+var sprite_14 = addAudioSentances('love', {
+  'I\'m kidding אני צוחק': [0, 1.04 * 1000],
+  'My Love אהבה שלי ': [1.2 * 1000, 1.2 * 1000],
+  'Why did you choose this city? למה בחרת בעיר הזו?': [2.5 * 1000, 1.6 * 1000],
+});
+var sprite_15 = addAudioSentances('why this country', {
+  'למה המדינה הזאת? why this country': [0, 2 * 1000],
+});
 
+var sprite_16 = addAudioSentances('tell me u joking', {
+  'תגיד אתה צוחק tell me you are joking?': [0, 4 * 1000],
+});
+
+var sprite_17 = addAudioSentances('open-close', {
+  'what time do they close מתי הם נסגרים': [0, 1.2 * 1000],
+  'what time do they close מתי הם נפתחים': [1.3 * 1000, 1.5 * 1000],
+  'the weather is nice today מזג האוויר נחמד היום': [2.7 * 1000, 2 * 1000],
+});
 
 function playAll() {
   document.querySelectorAll('.sprite > .sprite-label').forEach((item, index) => {
@@ -552,7 +575,7 @@ function playAll() {
 
 var spritesArray = [
   // 'sprite_5', 'sprite_6', 'sprite_7', 
-  'sprite_12','sprite_11','sprite_10', 'sprite_9', 'sprite_5', 'sprite_6', 'sprite_7', 'sprite_8',  
+  'sprite_17', 'sprite_16', 'sprite_15', 'sprite_14', 'sprite_13', 'sprite_12','sprite_11','sprite_10', 'sprite_9', 'sprite_5', 'sprite_6', 'sprite_7', 'sprite_8',  
   'sprite_3', 'sprite_4', 'sprite_1', 'sprite_2', 
 
 ]
@@ -562,9 +585,8 @@ function playSprits(sprite, index, delay) {
     return;
   }
   currentAudio = window[sprite[index]];
-  window[sprite[index]].playAll(0, 1000).then(() => {
+  window[sprite[index]].playAll(0, 2000, 2).then(() => {
     setTimeout(() => {
-      debugger
       playSprits(sprite, index + 1, 2000);
     }, delay);
   });
@@ -572,7 +594,7 @@ function playSprits(sprite, index, delay) {
 var currentAudio;
 function playAll2() {
   currentAudio?.sound?.stop();
-  playSprits(spritesArray, 0, 500);
+  playSprits(spritesArray, 0, 3000);
 }
 function pauseAudio() {
   currentAudio?.sound?.pause();
