@@ -25,13 +25,14 @@ var Sprite = function(options) {
   self._left = options?.left || [];
   self._spriteMap = options.spriteMap;
   self._sprite = options.sprite;
-  self.setupListeners();
+  self._currentPlayingEl = undefined;
 
   // Create our audio sprite definition.
   self.sound = new Howl({
     src: options.src,
     sprite: options.sprite
   });
+  self.setupListeners();
 
   // Setup a resize event and fire it to setup our sprite overlays.
   window.addEventListener('resize', function() {
@@ -52,9 +53,18 @@ Sprite.prototype = {
 
     keys.forEach(function(key) {
       
-      document.getElementById(key)?.addEventListener('click', function() {
+      document.getElementById(key)?.addEventListener('click', function(e) {
         self.play(key);
+        self._currentPlayingEl = e.target;
       }, false);
+    });
+
+    self.sound.on('end', function(event) {
+      var customEvent = new Event('spritePlayEnded', {
+        bubbles: true,
+        detail: self._currentPlayingEl
+      });
+      self._currentPlayingEl.dispatchEvent(customEvent);
     });
   },
 
@@ -86,6 +96,11 @@ Sprite.prototype = {
     //     window[key].removeChild(elm);
     //   }
     // }, id);
+  },
+  playSelected: function() {
+    document.addEventListener('spritePlayEnded', function(event) {
+      console.log('Custom event triggered with data:', event);
+    });
   },
   playAll: function(index = 0, delay, repeat, repeated = 0) {
     var self = this;
@@ -488,11 +503,11 @@ var sprite_4 = new Sprite({
 });
 spritesArray.push(sprite_4);
 
-function addAudioSentances(name, sentences) {
+function addAudioSentances(name, sentences, addToArray = true) {
   var spriteMap = {};
   Object.keys(sentences).forEach((key) => {
     var sprit = document.createElement('div');
-    sprit.setAttribute('id', key);
+    sprit.setAttribute('id', key.replace(/ /g,'-'));
     sprit.setAttribute('class', 'sprite');
     sprit.innerHTML = `<div class="sprite-label">${key}</div>`;
     spritContainer.appendChild(sprit);
@@ -505,13 +520,15 @@ function addAudioSentances(name, sentences) {
     sprite: sentences,
     spriteMap: spriteMap,
   });
-  spritesArray.push(newSprite);
+  if (addToArray) {
+    spritesArray.push(newSprite);
+  }
 
   return newSprite;
 }
 function addAudio (name, label, time = 1) {
   var sprit = document.createElement('div');
-  sprit.setAttribute('id', name);
+  sprit.setAttribute('id', name.replace(/ /g,'-'));
   sprit.setAttribute('class', 'sprite');
   sprit.innerHTML = `<div class="sprite-label">${label || name}</div>`;
   spritContainer.appendChild(sprit);
@@ -532,9 +549,26 @@ function addAudio (name, label, time = 1) {
   return newSprite;
 }
 
+var sprite_5 = addAudioSentances('i wonder who will find sinwar socks', {
+  'i wonder who will find sinwar socks מעניין מי תמצא את הגרביים של יחיאה סינוואר': [0, 3 * 1000],
+});
+
+var sprite_5 = addAudioSentances('do not know him', {
+  'I do not know. אני לא מכיר.': [0, 1 * 1000],
+  'you know me.  אתה מכיר אותי.': [1.1 * 1000, 1.1 * 1000],
+  // 'you do not know .  אתה לא מכיר.': [2.2 * 1000, 1.1 * 1000],
+  ' I do not know him.  אני לא מכיר אותו.': [3.5 * 1000, 1.3 * 1000],
+  'I don\'t know Ahmed.  אני לא מכיר את אחמד. ': [4.8 * 1000, 1.4 * 1000],
+});
+
+var sprite_5 = addAudioSentances('forgive me', {
+  'forgive me סלח לי': [0, .8 * 1000],
+  'do i know you? האם אני מכיר אותך.': [.88 * 1000, 1.5 * 1000],
+});
+
 var sprite_5 = addAudioSentances('stupid', {
   'stupid אתה טיפש': [0, .9 * 1000],
-  'dumb אתה מטוּמטם': [1 * 1000, 5 * 1000],
+  'dumb אתה מטוּמטם': [1 * 1000, 2 * 1000],
 });
 
 var sprite_6 = addAudioSentances('wait wait', {
@@ -551,7 +585,7 @@ var sprite_8 = addAudio('sure sure', 'sure sure בטח בטח');
 var sprite_9 = addAudio('I can not read', 'I can not read אני לא יכול לקרוא', 2);
 var sprite_10 = addAudio('I am sorry', 'I am sorry אני מצטער', 2);
 var sprite_11 = addAudio('do not know what are you talking about','idk what are you talking about אני לא יודע מה אתה מדבר', 2);
-var sprite_12 = addAudio('what do you mean','what do you mean מה את מתכוונת', 2);
+var sprite_12 = addAudio('what do you mean','what do you mean למה את מתכוונת', 2);
 var sprite_13 = addAudioSentances('mesc', {
   'He died for nothing הוא מת לחינם': [0, 1.04 * 1000],
   'Shoes Yahya נעליים של': [1.2 * 1000, 1.5 * 1000],
@@ -582,12 +616,126 @@ addAudioSentances('Does anyone know when the cinema opens', {
   'Does anyone know when the cinema opens? מתי נפתח הקולנוע מישהו יודע?': [0, 2 * 1000],
 });
 addAudioSentances('you think. i think. they think', {
-  'you think. i think. they think אתה חושב. אני חושב. הם חושב.': [0, 2 * 1000],
+  'you think. i think. they think אתה חושב. אני חושב. הם חושב.': [0, 3 * 1000],
 });
 
 addAudioSentances('I think you should stay silent', {
   'I think you should stay silent אני חושב שאתה צריך לשתוק': [0, 2 * 1000],
 });
+
+addAudioSentances('you ask me', {
+  'are you asking me?  אתה שואל אותי.': [2 * 1000, 1.5 * 1000],
+  'you are asking BiBi, right? אתה שואל את ביבי נכון.': [0 * 1000, 2 * 1000],
+  // 'if you ask me  אם אתה שואל אותי.': [3.5 * 1000, 1.3 * 1000],
+});
+addAudioSentances('if you ask me', {
+  'if you ask me  אם אתה שואל אותי.': [0 * 1000, 1.5 * 1000],
+});
+
+var sprite500 = addAudioSentances('500_words_1-100', {
+  'dad	a-ba	אבא': [0 * 1000, 1.1 * 1000],
+  'watermelon	a-va-ti-akh	אבטיח': [1.3 * 1000, 1.2 * 1000],
+  'Spring	a-viv	אביב': [2.7 * 1000, 1.2 * 1000],
+  'but	a-val	אבל': [4.050 * 1000, 1.2 * 1000],
+  'thumb	a-gu-dal	אגודל': [5.4 * 1000, 1.35 * 1000],
+  'walnut	e-goz me-lekh	אגוז מלך': [6.75 * 1000, 1.35 * 1000],
+  'pear	a-gas	אגס': [8.100 * 1000, 1.35 * 1000],
+  'red	a-dom	אדום': [9.450 * 1000, 1.35 * 1000],
+  'or	o	או': [10.8 * 1000, 1.35 * 1000],
+  'ear	o-zen	אוזן': [12.15 * 1000, 1.35 * 1000],
+  'bus	o-to-bus	אוטובוס': [13.5 * 1000, 1.35 * 1000],
+  'food	o-khel	אוכל': [14.850 * 1000, 1.35 * 1000],
+  'maybe	u-lai	אולי': [16.2 * 1000, 1.35 * 1000],
+  'university	u-ni-ver-si-ta	אוניברסיטה': [17.55 * 1000, 1.35 * 1000],
+  'bicycle	o-fa-na-yim	אופניים': [18.9 * 1000, 1.35 * 1000],
+  'rice	o-rez	אורז': [20.35 * 1000, 1.35 * 1000],
+  'so, then	az	אז': [21.6 * 1000, 1.35 * 1000],
+  'brother	akh	אח': [22.95 * 1000, 1.35 * 1000],
+  'sister	a-khot	אחות': [24.3 * 1000, 1.35 * 1000],
+  'last, final	a-kha-ron	אחרון': [25.65 * 1000, 1.35 * 1000],
+  'which	ei-ze	איזה': [27 * 1000, 1.35 * 1000],
+  'slow	i-ti	איטי': [28.35 * 1000, 1.35 * 1000],
+  'how	eikh	איך': [29.7 * 1000, 1.35 * 1000],
+  'mom	i-ma	אימא': [31 * 1000, 1.3 * 1000],
+  'there isn’t/aren’t	ein	אין': [32.4 * 1000, 1.15 * 1000],
+  'where	ei-fo	איפה': [33.6 * 1000, 1 * 1000],
+  'wife	i-sha	אישה': [34.7 * 1000, 1.35 * 1000],
+  'if	im	אם': [35.3 * 1000, 1.2 * 1000],
+  'English	an-glit	אנגלית': [37 * 1000, 1.35 * 1000],
+  'we	a-nakh-nu	אנחנו': [38 * 1000, 1.35 * 1000],
+  'I	a-ni	אני': [39.29 * 1000, 1.35 * 1000],
+  'pineapple	a-na-nas	אננס': [41 * 1000, 1.35 * 1000],
+  'forbidden	a-sur	אסור': [42.35 * 1000, 1.35 * 1000],
+  'nose	af	אף': [43.7 * 1000, 1.35 * 1000],
+  'peach	a-far-sek	אפרסק': [45.05 * 1000, 1.35 * 1000],
+  '(it is) possible	ef-shar	אפשר': [46.4 * 1000, 1.35 * 1000],
+  'finger, toe	ets-ba	אצבע': [47.75 * 1000, 1.35 * 1000],
+  'breakfast	a-ru-khat bo-ker	ארוחת בוקר': [49.1 * 1000, 1.5 * 1000],
+  'dinner	a-ru-khat e-rev	ארוחת ערב': [50.9 * 1000, 1.35 * 1000],
+
+  // 'lunch	a-ru-khat tso-ho-ra-yim	ארוחת צהריים': [51.8 * 1000, 1.35 * 1000],
+  // 'wallet	ar-nak	ארנק': [53.15 * 1000, 1.35 * 1000],
+  // 'grapefruit	esh-ko-lit	אשכולית': [54.5 * 1000, 1.35 * 1000],
+  // 'you (f.)	at	את': [55.85 * 1000, 1.35 * 1000],
+  // 'you (m.)	a-ta	אתה': [57.2 * 1000, 1.35 * 1000],
+  // 'you (m.p.)	a-tem	אתם': [58.55 * 1000, 1.35 * 1000],
+  // 'yesterday	et-mol	אתמול': [59.900000000000006 * 1000, 1.35 * 1000],
+  // 'you (f.p.)	a-ten	אתן': [61.25 * 1000, 1.35 * 1000],
+  // 'in, at	be, ba	ב...': [62.6 * 1000, 1.35 * 1000],
+  // 'please	be-va-ka-sha	בבקשה': [63.95 * 1000, 1.35 * 1000],
+  // 'clothes	be-ga-dim	בגדים': [65.3 * 1000, 1.35 * 1000],
+  // 'good luck	be-hats-la-kha	בהצלחה': [66.65 * 1000, 1.35 * 1000],
+  // 'morning	bo-ker	בוקר': [68 * 1000, 1.35 * 1000],
+  // 'outside	ba-khuts	בחוץ': [69.35 * 1000, 1.35 * 1000],
+  // 'sweet potato	ba-ta-ta	בטטה': [70.7 * 1000, 1.35 * 1000],
+  // 'stomach/abdomen/tummy	be-ten	בטן': [72.05 * 1000, 1.35 * 1000],
+  // 'together	be-ya-khad	ביחד': [73.4 * 1000, 1.35 * 1000],
+  // 'medium	bei-no-ni	בינוני': [74.75 * 1000, 1.35 * 1000],
+  // 'egg	bei-tsa	ביצה': [76.1 * 1000, 1.35 * 1000],
+  // 'beer	bi-ra	בירה': [77.45 * 1000, 1.35 * 1000],
+  // 'house	ba-yit	בית': [78.80 * 1000, 1.35 * 1000],
+  // 'hospital	beit kho-lim	בית חולים': [80.15 * 1000, 1.35 * 1000],
+  // 'synagogue	beit kne-set	בית כנסת': [81.5 * 1000, 1.35 * 1000],
+  // 'pharmacy	beit mir-ka-khat	בית מרקחת': [82.85 * 1000, 1.35 * 1000],
+  // 'school	beit se-fer	בית ספר': [84.2 * 1000, 1.35 * 1000],
+  // 'without	bli	בלי': [85.55000000000001 * 1000, 1.35 * 1000],
+  // 'son	ben	בן': [86.9 * 1000, 1.35 * 1000],
+  // 'cousin	ben dod	בן דוד': [88.25 * 1000, 1.35 * 1000],
+  // 'gasoline	ben-zin	בנזין': [89.6 * 1000, 1.35 * 1000],
+  // 'building	bin-yan	בניין': [90.95 * 1000, 1.35 * 1000],
+  // 'banana	ba-na-na	בננה': [92.30000000000001 * 1000, 1.35 * 1000],
+  // 'bank	bank	בנק': [93.65 * 1000, 1.35 * 1000],
+  // 'okay	be-se-der	בסדר': [95 * 1000, 1.35 * 1000],
+  // 'husband	ba-al	בעל': [96.35 * 1000, 1.35 * 1000],
+  // 'inside	bif-nim	בפנים': [97.7 * 1000, 1.35 * 1000],
+  // 'onion	ba-tsal	בצל': [99.05000000000001 * 1000, 1.35 * 1000],
+  // 'bottle	bak-buk	בקבוק': [100.4 * 1000, 1.35 * 1000],
+  // 'beef	ba-kar	בקר': [101.75 * 1000, 1.35 * 1000],
+  // 'soon	be-ka-rov	בקרוב': [103.1 * 1000, 1.35 * 1000],
+  // 'healthy	ba-ri	בריא': [104.45 * 1000, 1.35 * 1000],
+  // 'meat	ba-sar	בשר': [105.80000000000001 * 1000, 1.35 * 1000],
+  // 'daughter	bat	בת': [107.15 * 1000, 1.35 * 1000],
+  // 'cockroach	juk	ג\'וק': [108.5 * 1000, 1.35 * 1000],
+  // 'back	gav	גב': [109.85000000000001 * 1000, 1.35 * 1000],
+  // 'high	ga-vo-ha	גבוה': [111.2 * 1000, 1.35 * 1000],
+  // 'cheese	gvi-na	גבינה': [112.55000000000001 * 1000, 1.35 * 1000],
+  // 'big	ga-dol	גדול': [113.9 * 1000, 1.35 * 1000],
+  // 'height	go-va	גובה': [115.25 * 1000, 1.35 * 1000],
+  // 'body	guf	גוף': [116.60000000000001 * 1000, 1.35 * 1000],
+  // 'carrot	ge-zer	גזר': [117.95 * 1000, 1.35 * 1000],
+
+  'ice cream	gli-da	גלידה': [121 * 1000, 1.35 * 1000],
+  'also	gam	גם': [122.2 * 1000, 1.35 * 1000],
+  'socks	gar-ba-yim	גרביים': [123.6 * 1000, 1.35 * 1000],
+  'rain	ge-shem	גשם': [124.6000000000001 * 1000, 1.35 * 1000],
+  'honey	dvash	דבש': [125.9 * 1000, 1.35 * 1000],
+  'fish	dag	דג': [127.4 * 1000, 1.35 * 1000],
+  'mail; post office	do-ar	דואר': [128.4 * 1000, 1.35 * 1000],
+  'cherry	duv-de-van	דובדבן': [129.75 * 1000, 1.35 * 1000],
+  'uncle	dod	דוד': [131.4 * 1000, 1.35 * 1000],
+  'aunt	do-da	דודה': [132.2 * 1000, 1.35 * 1000],
+  'apartment	di-ra': [133.8 * 1000, 1.35 * 1000],
+}, false);
 
 function playAll() {
   document.querySelectorAll('.sprite > .sprite-label').forEach((item, index) => {
@@ -624,7 +772,11 @@ function playAll() {
   // shuffleArray(spritesArray);
   playSprits(spritesArray.slice(4), 0, 2000);
 }
-
+function playAll500() {
+  currentAudio?.sound?.unload();
+  // shuffleArray(spritesArray);
+  playSprits([sprite500], 0, 2000);
+}
 function playAll100(index) {
   currentAudio?.sound?.unload();
   // shuffleArray(spritesArray);

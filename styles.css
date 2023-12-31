@@ -68,7 +68,7 @@ button {
   padding: 5px 20px;
   display: flex;
     align-items: center;
-    background: #bab38b;
+    background: #068155;
     z-index: 2;
 }
 /* Sprites */
@@ -137,4 +137,11 @@ button {
 .playing-sprite {
   background-color: #246eaa;
   color: black;
+}
+
+#sprite84,
+#sprite77,
+#what-do-you-mean
+{
+  background-color: red;
 }
