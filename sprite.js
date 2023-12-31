@@ -53,7 +53,7 @@ Sprite.prototype = {
 
     keys.forEach(function(key) {
       
-      document.getElementById(key)?.addEventListener('click', function(e) {
+      document.getElementById(key.replace(/ /g,'-'))?.addEventListener('click', function(e) {
         self.play(key);
         self._currentPlayingEl = e.target;
       }, false);
