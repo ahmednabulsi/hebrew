@@ -53,19 +53,29 @@ Sprite.prototype = {
 
     keys.forEach(function(key) {
       
-      document.getElementById(key.replace(/ /g,'-'))?.addEventListener('click', function(e) {
+      document.querySelector('#' + key.replace(/ |\.|\'|\?|\’|\/|\;|\(|\)|\//g,'-'))?.querySelector('.sprite-label')?.addEventListener('click', function(e) {
         self.play(key);
         self._currentPlayingEl = e.target;
       }, false);
+
+      document.querySelector('#' + key.replace(/ |\.|\'|\?|\’|\/|\;|\(|\)|\//g,'-'))?.querySelector('label')?.addEventListener('click', function(e) {
+        var items = {};
+        document.querySelectorAll('.sprite').forEach((item, index) => {
+            console.log(item.querySelector('input').checked)
+            items[item.id] = item.querySelector('input').checked
+        });
+        localStorage.setItem('sprites', JSON.stringify(items));
+      }, false);
+
     });
 
-    self.sound.on('end', function(event) {
-      var customEvent = new Event('spritePlayEnded', {
-        bubbles: true,
-        detail: self._currentPlayingEl
-      });
-      self._currentPlayingEl.dispatchEvent(customEvent);
-    });
+    // self.sound.on('end', function(event) {
+    //   var customEvent = new Event('spritePlayEnded', {
+    //     bubbles: true,
+    //     detail: self._currentPlayingEl
+    //   });
+    //   self._currentPlayingEl.dispatchEvent(customEvent);
+    // });
   },
 
   /**
@@ -97,9 +107,16 @@ Sprite.prototype = {
     //   }
     // }, id);
   },
-  playSelected: function() {
-    document.addEventListener('spritePlayEnded', function(event) {
-      console.log('Custom event triggered with data:', event);
+  playSelected: function(key) {
+    var self = this;
+    var sprite = self._spriteMap[key];
+
+    // Play the sprite sound and capture the ID.
+    var id = self.sound.play(sprite);
+    return new Promise((resolve) => {
+      self.sound.once('end', function() {
+          resolve();
+      }, id);
     });
   },
   playAll: function(index = 0, delay, repeat, repeated = 0) {
@@ -191,7 +208,6 @@ Sprite.prototype = {
     requestAnimationFrame(self.step.bind(self));
   }
 };
-
 
 var spriteMap_1 = [
   "Good morning.  בוקר טוב.",
@@ -325,12 +341,13 @@ spriteMap_4.forEach((item, index) => {
 var spritContainer = document.querySelector('.sprites');
 // const combinedSprite = {...spriteMap1, ...spriteMap2, ...spriteMap3, ...spriteMap4};
 
-function addSprites(sprite, offset) {
+function addSprites(sprite, spriteObjName, offset) {
   Object.keys(sprite).forEach(function(key, index) {
     var sprit = document.createElement('div');
     sprit.setAttribute('id', key);
     sprit.setAttribute('class', 'sprite');
-    sprit.innerHTML = `<div class="sprite-label">${offset + index + 1}. ${sprite[key]}</div>`;
+    sprit.innerHTML = `<label><input data-sprite-key="${key}" data-sprites-obj="${spriteObjName}" type="checkbox">
+      </label><div class="sprite-label">${offset + index + 1}. ${sprite[key]}</div>`;
     spritContainer.appendChild(sprit);
     // if ((index + 1) % 25 == 0) {
     //   var hr = document.createElement('hr');
@@ -339,10 +356,10 @@ function addSprites(sprite, offset) {
     window[key] = sprit;
   });
 }
-addSprites(spriteMap1, 0);
-addSprites(spriteMap2, 25);
-addSprites(spriteMap3, 50);
-addSprites(spriteMap4, 75);
+addSprites(spriteMap1, 'sprite_1', 0);
+addSprites(spriteMap2, 'sprite_2', 25);
+addSprites(spriteMap3, 'sprite_3', 50);
+addSprites(spriteMap4, 'sprite_4', 75);
 var spritesArray = [];
 // Setup our new sprite class and pass in the options.
 
@@ -503,13 +520,14 @@ var sprite_4 = new Sprite({
 });
 spritesArray.push(sprite_4);
 
-function addAudioSentances(name, sentences, addToArray = true) {
+function addAudioSentances(name, spriteObjName, sentences, addToArray = true) {
   var spriteMap = {};
   Object.keys(sentences).forEach((key) => {
     var sprit = document.createElement('div');
-    sprit.setAttribute('id', key.replace(/ /g,'-'));
+    sprit.setAttribute('id', key.replace(/ |\.|\'|\?|\’|\/|\;|\(|\)|\//g,'-'));
     sprit.setAttribute('class', 'sprite');
-    sprit.innerHTML = `<div class="sprite-label">${key}</div>`;
+    sprit.innerHTML = `<label><input data-sprite-key="${key}" data-sprites-obj="${spriteObjName}" type="checkbox">
+    </label><div class="sprite-label">${key}</div>`;
     spritContainer.appendChild(sprit);
     window[key] = sprit;
     spriteMap[key] = key;
@@ -526,11 +544,12 @@ function addAudioSentances(name, sentences, addToArray = true) {
 
   return newSprite;
 }
-function addAudio (name, label, time = 1) {
+function addAudio (name, spriteObjName, label, time = 1) {
   var sprit = document.createElement('div');
-  sprit.setAttribute('id', name.replace(/ /g,'-'));
+  sprit.setAttribute('id', name.replace(/ |\.|\'|\?|\’|\/|\;|\(|\)|\//g,'-'));
   sprit.setAttribute('class', 'sprite');
-  sprit.innerHTML = `<div class="sprite-label">${label || name}</div>`;
+  sprit.innerHTML = `<label><input data-sprite-key="${name}" data-sprites-obj="${spriteObjName}" type="checkbox">
+  </label><div class="sprite-label">${label || name}</div>`;
   spritContainer.appendChild(sprit);
   window[name] = sprit;
   
@@ -549,29 +568,29 @@ function addAudio (name, label, time = 1) {
   return newSprite;
 }
 
-var sprite_5 = addAudioSentances('i wonder who will find sinwar socks', {
+var sprite_5 = addAudioSentances('i wonder who will find sinwar socks', 'sprite_5', {
   'i wonder who will find sinwar socks מעניין מי תמצא את הגרביים של יחיאה סינוואר': [0, 3 * 1000],
 });
 
-var sprite_5 = addAudioSentances('do not know him', {
-  'I do not know. אני לא מכיר.': [0, 1 * 1000],
+var sprite_6 = addAudioSentances('do not know him', 'sprite_6', {
+  'I do not know אני לא מכיר': [0, 1 * 1000],
   'you know me.  אתה מכיר אותי.': [1.1 * 1000, 1.1 * 1000],
   // 'you do not know .  אתה לא מכיר.': [2.2 * 1000, 1.1 * 1000],
   ' I do not know him.  אני לא מכיר אותו.': [3.5 * 1000, 1.3 * 1000],
   'I don\'t know Ahmed.  אני לא מכיר את אחמד. ': [4.8 * 1000, 1.4 * 1000],
 });
 
-var sprite_5 = addAudioSentances('forgive me', {
+var sprite_7 = addAudioSentances('forgive me', 'sprite_7', {
   'forgive me סלח לי': [0, .8 * 1000],
   'do i know you? האם אני מכיר אותך.': [.88 * 1000, 1.5 * 1000],
 });
 
-var sprite_5 = addAudioSentances('stupid', {
+var sprite_8 = addAudioSentances('stupid', 'sprite_8', {
   'stupid אתה טיפש': [0, .9 * 1000],
   'dumb אתה מטוּמטם': [1 * 1000, 2 * 1000],
 });
 
-var sprite_6 = addAudioSentances('wait wait', {
+var sprite_9 = addAudioSentances('wait wait', 'sprite_9', {
   'I saw it with my own eyes ראית במו עיניי': [0, 1.31 * 1000],
   'all you do is killing כל מה שאתה עושה להרוג': [1.4 * 1000, 1.5 * 1000],
   'what are you doing here למה אתה פה': [3 * 1000, 1.25 * 1000],
@@ -580,59 +599,59 @@ var sprite_6 = addAudioSentances('wait wait', {
   'wait wait רגע רגע': [6 * 1000, 1 * 1000],
 });
 
-var sprite_7 = addAudio('smart','I am smart אני פיקח');
-var sprite_8 = addAudio('sure sure', 'sure sure בטח בטח');
-var sprite_9 = addAudio('I can not read', 'I can not read אני לא יכול לקרוא', 2);
-var sprite_10 = addAudio('I am sorry', 'I am sorry אני מצטער', 2);
-var sprite_11 = addAudio('do not know what are you talking about','idk what are you talking about אני לא יודע מה אתה מדבר', 2);
-var sprite_12 = addAudio('what do you mean','what do you mean למה את מתכוונת', 2);
-var sprite_13 = addAudioSentances('mesc', {
+var sprite_10 = addAudio('smart', 'sprite_10', 'I am smart אני פיקח');
+var sprite_11 = addAudio('sure sure', 'sprite_11', 'sure sure בטח בטח');
+var sprite_12 = addAudio('I can not read', 'sprite_12', 'I can not read אני לא יכול לקרוא', 2);
+var sprite_13 = addAudio('I am sorry', 'sprite_13', 'I am sorry אני מצטער', 2);
+var sprite_14 = addAudio('do not know what are you talking about', 'sprite_14', 'idk what are you talking about אני לא יודע מה אתה מדבר', 2);
+var sprite_15 = addAudio('what do you mean', 'sprite_15', 'what do you mean למה את מתכוונת', 2);
+var sprite_16 = addAudioSentances('mesc', 'sprite_16', {
   'He died for nothing הוא מת לחינם': [0, 1.04 * 1000],
   'Shoes Yahya נעליים של': [1.2 * 1000, 1.5 * 1000],
   'Mesage ending. Thanks Friend חברה תודה': [3 * 1000, 1 * 1000],
 });
-var sprite_14 = addAudioSentances('love', {
+var sprite_17 = addAudioSentances('love', 'sprite_17', {
   'I\'m kidding אני צוחק': [0, 1.04 * 1000],
   'My Love אהבה שלי ': [1.2 * 1000, 1.2 * 1000],
   'Why did you choose this city? למה בחרת בעיר הזו?': [2.5 * 1000, 1.6 * 1000],
 });
-var sprite_15 = addAudioSentances('why this country', {
+var sprite_18 = addAudioSentances('why this country', 'sprite_18', {
   'למה המדינה הזאת? why this country': [0, 2 * 1000],
 });
 
-var sprite_16 = addAudioSentances('tell me u joking', {
+var sprite_19 = addAudioSentances('tell me u joking', 'sprite_19', {
   'תגיד אתה צוחק tell me you are joking?': [0, 4 * 1000],
 });
 
-var sprite_17 = addAudioSentances('open-close', {
+var sprite_20 = addAudioSentances('open-close', 'sprite_20', {
   'what time do they close מתי הם נסגרים': [0, 1.2 * 1000],
   'what time do they close מתי הם נפתחים': [1.3 * 1000, 1.5 * 1000],
   'the weather is nice today מזג האוויר נחמד היום': [2.7 * 1000, 2 * 1000],
 });
-addAudioSentances('anyone knows when they open', {
+var sprite_21 = addAudioSentances('anyone knows when they open', 'sprite_21', {
   'anyone know when they open? מישהו יודע מתי נפתחי?': [0, 2 * 1000],
 });
-addAudioSentances('Does anyone know when the cinema opens', {
+var sprite_22 = addAudioSentances('Does anyone know when the cinema opens', 'sprite_22', {
   'Does anyone know when the cinema opens? מתי נפתח הקולנוע מישהו יודע?': [0, 2 * 1000],
 });
-addAudioSentances('you think. i think. they think', {
+var sprite_23 = addAudioSentances('you think. i think. they think', 'sprite_23', {
   'you think. i think. they think אתה חושב. אני חושב. הם חושב.': [0, 3 * 1000],
 });
 
-addAudioSentances('I think you should stay silent', {
+var sprite_24 = addAudioSentances('I think you should stay silent', 'sprite_24', {
   'I think you should stay silent אני חושב שאתה צריך לשתוק': [0, 2 * 1000],
 });
 
-addAudioSentances('you ask me', {
+var sprite_25 = addAudioSentances('you ask me', 'sprite_25', {
   'are you asking me?  אתה שואל אותי.': [2 * 1000, 1.5 * 1000],
   'you are asking BiBi, right? אתה שואל את ביבי נכון.': [0 * 1000, 2 * 1000],
   // 'if you ask me  אם אתה שואל אותי.': [3.5 * 1000, 1.3 * 1000],
 });
-addAudioSentances('if you ask me', {
+var sprite_26 = addAudioSentances('if you ask me', 'sprite_26', {
   'if you ask me  אם אתה שואל אותי.': [0 * 1000, 1.5 * 1000],
 });
 
-var sprite500 = addAudioSentances('500_words_1-100', {
+var sprite500 = addAudioSentances('500_words_1-100', 'sprite500', {
   'dad a-ba אבא': [0 * 1000, 1.1 * 1000],
   'watermelon a-va-ti-akh אבטיח': [1.3 * 1000, 1.2 * 1000],
   'Spring a-viv אביב': [2.7 * 1000, 1.2 * 1000],
@@ -792,4 +811,43 @@ function pauseAudio() {
 }
 function resumeAudio() {
   currentAudio?.sound?.play();
+}
+
+setTimeout(() => {
+  var selectedSprites = JSON.parse(localStorage.getItem('sprites'));
+  document.querySelectorAll('.sprite').forEach((item, index) => {
+    item.querySelector('input').checked = selectedSprites[item.id] || false;
+  });
+}, 50);
+
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+async function processWithDelay(spriteKey) {
+  window[spriteKey]?.querySelector('.sprite-label')?.click();
+  await sleep(5000);
+}
+
+async function playSelected1 () {
+  var selectedCheckboxes = document.querySelectorAll('.sprite input[type="checkbox"]:checked');
+
+  for (let i = 0; i < selectedCheckboxes.length; i++) {
+    var spriteKey = selectedCheckboxes[i].getAttribute('data-sprite-key');
+
+    await processWithDelay(spriteKey);
+  }
+}
+
+async function playSelected () {
+  var selectedCheckboxes = document.querySelectorAll('.sprite input[type="checkbox"]:checked');
+
+  for (let i = 0; i < selectedCheckboxes.length; i++) {
+    var spritesObj = selectedCheckboxes[i].getAttribute('data-sprites-obj');
+    var spriteKey = selectedCheckboxes[i].getAttribute('data-sprite-key');
+
+    await window[spritesObj]?.playSelected(spriteKey);
+    await sleep(2000);
+
+  }
 }

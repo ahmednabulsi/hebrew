@@ -93,6 +93,8 @@ button {
   height: 35px;
   /* width: 0; */
   margin: 5px 5px;
+  display: flex;
+  align-items: center;
 }
 .sprite:hover {
   background-color: rgba(0, 0, 0, 0.2);
@@ -144,4 +146,8 @@ button {
 #what-do-you-mean
 {
   background-color: red;
+}
+
+.sprite label {
+  width: 40px;
 }
