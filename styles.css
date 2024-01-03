@@ -13,15 +13,8 @@ body {
   padding: 0;
   margin: 0;
   margin-top: 100px !important;
-  background: #007215;
-  /* background: -moz-linear-gradient(-45deg, #a30101 0%, #fbca05 100%); */
-  /* background: -webkit-linear-gradient(-45deg, #a30101 0%, #fbca05 100%); */
-  /* background: linear-gradient(135deg, #a30101 0%, #fbca05 100%); */
-  /* filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a30101', endColorstr='#fbca05', GradientType=1); */
   font-family: "Helvetica Neue", "Futura", "Trebuchet MS", Arial;
-  -webkit-user-select: none;
-  user-select: none;
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  background: black;
 }
 button {
   padding: 7px;
@@ -68,7 +61,7 @@ button {
   padding: 5px 20px;
   display: flex;
     align-items: center;
-    background: #068155;
+    background: #004618;
     z-index: 2;
 }
 /* Sprites */
@@ -77,6 +70,9 @@ button {
   flex-wrap: wrap;
   width: 100%;
   padding: 20px 20px 132px;
+}
+.selected.selected {
+  background-color: red;;
 }
 .progress {
   position: absolute;
@@ -88,13 +84,19 @@ button {
 }
 .sprite {
   top: 0;
-  background-color: rgba(0, 0, 0, 0.1);
-  border: 3px solid rgba(0, 0, 0, 0.4);
+  background-color: rgb(0 70 24);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  color: white;
   height: 35px;
-  /* width: 0; */
   margin: 5px 5px;
   display: flex;
   align-items: center;
+  flex: 0 0 calc(50% - 50px);
+}
+
+input[type="checkbox"] {
+  width: 30px;
+  height: 25px;
 }
 .sprite:hover {
   background-color: rgba(0, 0, 0, 0.2);
@@ -122,12 +124,12 @@ button {
   font-size: 1.5em;
   opacity: 0.8;
   font-weight: 300;
-  color: #fff;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
   /* position: absolute; */
   bottom: -33px;
   left: 0;
   white-space: nowrap;
+  width: 92%;
 }
 
 @media screen and (max-height: 480px), screen and (max-width: 670px) {
@@ -150,4 +152,7 @@ button {
 
 .sprite label {
   width: 40px;
+}
+#time-is-money--זמן-הוא-כסף {
+  background-color: red;
 }
