@@ -658,7 +658,7 @@ var sprite_27 = addAudioSentances('time is money', 'sprite_27', {
 var sprite_28 = addAudioSentances('are you rich', 'sprite_28', {
   'are you rich אתה עשיר': [0 * 1000, 2.5 * 1000],
 });
-var sprite_29 = addAudioSentances('I am broke', 'sprite_29', {
+var sprite_29 = addAudioSentances('i am broke', 'sprite_29', {
   'I am broke אני מרושש': [0 * 1000, 2.5 * 1000],
 });
 
