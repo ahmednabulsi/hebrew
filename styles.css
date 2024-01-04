@@ -180,13 +180,9 @@ input[type="checkbox"] {
   body .selected.selected {
     background-color: #c8a5b8;
   }
-  body .playing-sprite {
-    background-color: #58a7df;
-    color: black;
-  }
 }
 
-.playing-sprite {
+body .sprite.playing-sprite {
   background-color: #58a7df;
   color: black;
 }

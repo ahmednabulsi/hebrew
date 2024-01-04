@@ -797,9 +797,9 @@ var sprite500_200 = addAudioSentances('500_words_101-200', 'sprite500_200', {
   'and  ve  ו...': [22.3 * 1000 , 1 * 1000],
   'this  ze  זה': [23.4 * 1000 , 1 * 1000],
   'cheap  zol  זול': [25.1 * 1000 , 1 * 1000],
-  'olive  za-yit  זית': [26.45 * 1000 , 1.2 * 1000],
-  'time  zman  זמן': [27.8 * 1000 , 1.2 * 1000],
-  'old (person)  za-ken  זקן': [29.150000000000002 * 1000 , 1.2 * 1000],
+  'olive  za-yit  זית': [26.45 * 1000 , 1.1 * 1000],
+  'time  zman  זמן': [27.8 * 1000 , 1.1 * 1000],
+  'old (person)  za-ken  זקן': [29.150000000000002 * 1000 , 1.1 * 1000],
   'friend  kha-ver  חבר': [30.5 * 1000 , 1.2 * 1000],
   'company  khev-ra  חברה': [31.85 * 1000 , 1.2 * 1000],
   'holiday  khag  חג': [33.2 * 1000 , 1 * 1000],
@@ -1185,23 +1185,23 @@ var sprite500_200 = addAudioSentances('500_words_101-200', 'sprite500_200', {
 // 'answer  תשובה': [133.65 * 1000 , 1.2 * 1000],
 // }, false);
 
-function playAll() {
-  document.querySelectorAll('.sprite > .sprite-label').forEach((item, index) => {
-    setTimeout(() => {
-        item.click();
-    }, index * 6000);
-  })
-}
+// function playAll() {
+//   document.querySelectorAll('.sprite > .sprite-label').forEach((item, index) => {
+//     setTimeout(() => {
+//         item.click();
+//     }, index * 6000);
+//   })
+// }
 
-function playSprits(sprites, index, delay) {
+function playSprits(sprites, index, delay, repeats) {
   if (index >= sprites.length) {
     return;
   }
   currentAudio = sprites[index];
-  var repeatTimes = currentAudio._sprite.length > 10 ? 1 : 2;
-  currentAudio.playAll(0, 2000, repeatTimes).then(() => {
+  var repeatTimes = repeats || (currentAudio._sprite.length > 10 ? 1 : 2);
+  currentAudio.playAll(0, delay, repeatTimes).then(() => {
     setTimeout(() => {
-      playSprits(sprites, index + 1, 2000);
+      playSprits(sprites, index + 1, delay, repeatTimes);
     }, delay);
   });
 }
@@ -1215,24 +1215,37 @@ function shuffleArray(array) {
 }
 
 var currentAudio;
-function playAll() {
+function playAllNew() {
   currentAudio?.sound?.unload();
   // shuffleArray(spritesArray);
-  playSprits(spritesArray.slice(4), 0, 2000);
+  playSprits(spritesArray.slice(4), 0, 500);
 }
 function playAll500(sprits) {
   currentAudio?.sound?.unload();
   // shuffleArray(spritesArray);
-  playSprits([sprits], 0, 2000);
+  playSprits([sprits], 0, 500, 3);
 }
 
 function playAll100(index) {
   currentAudio?.sound?.unload();
   // shuffleArray(spritesArray);
   if (index) {
-    playSprits([spritesArray[index]], 0, 2000);
+    playSprits([spritesArray[index]], 0, 500, 1);
   } else {
-    playSprits(spritesArray.slice(0, 4), 0, 2000);
+    playSprits(spritesArray.slice(0, 4), 0, 500, 1);
+  }
+}
+
+async function playSelected () {
+  var selectedCheckboxes = document.querySelectorAll('.sprite input[type="checkbox"]:checked');
+
+  for (let i = 0; i < selectedCheckboxes.length; i++) {
+    var spritesObj = selectedCheckboxes[i].getAttribute('data-sprites-obj');
+    var spriteKey = selectedCheckboxes[i].getAttribute('data-sprite-key');
+
+    await window[spritesObj]?.playSelected(spriteKey);
+    await sleep(1000);
+
   }
 }
 
@@ -1256,33 +1269,6 @@ setTimeout(() => {
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
-}
-async function processWithDelay(spriteKey) {
-  window[spriteKey]?.querySelector('.sprite-label')?.click();
-  await sleep(5000);
-}
-
-async function playSelected1 () {
-  var selectedCheckboxes = document.querySelectorAll('.sprite input[type="checkbox"]:checked');
-
-  for (let i = 0; i < selectedCheckboxes.length; i++) {
-    var spriteKey = selectedCheckboxes[i].getAttribute('data-sprite-key');
-
-    await processWithDelay(spriteKey);
-  }
-}
-
-async function playSelected () {
-  var selectedCheckboxes = document.querySelectorAll('.sprite input[type="checkbox"]:checked');
-
-  for (let i = 0; i < selectedCheckboxes.length; i++) {
-    var spritesObj = selectedCheckboxes[i].getAttribute('data-sprites-obj');
-    var spriteKey = selectedCheckboxes[i].getAttribute('data-sprite-key');
-
-    await window[spritesObj]?.playSelected(spriteKey);
-    await sleep(2000);
-
-  }
 }
 
 // Function to scroll to a specific item
