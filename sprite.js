@@ -10,6 +10,8 @@
 
 // Cache references to DOM elements.
 
+Howler.mobileAutoEnable = false;
+
 
 /**
  * Sprite class containing the state of our sprites to play and their progress.
