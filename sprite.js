@@ -10,6 +10,8 @@
 
 // Cache references to DOM elements.
 
+Howler.usingWebAudio = true;
+
 
 /**
  * Sprite class containing the state of our sprites to play and their progress.
