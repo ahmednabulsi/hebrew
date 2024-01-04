@@ -142,6 +142,17 @@ input[type="checkbox"] {
   body {
     font-size: 75%;
   }
+  body .fixed-toolbar {
+    height: 250PX;
+    flex-wrap: wrap;
+    background: #607d8b;
+  }
+  body .fixed-toolbar button {
+    padding: 10px 20px;
+    font-size: 32px;
+    margin: 10px 20px;
+    border-radius: 8px;
+  }
   body .sprite {
     flex: 0 0 calc(100% - 50px);
     font-size: 30px;
