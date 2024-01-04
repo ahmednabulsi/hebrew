@@ -173,7 +173,10 @@ input[type="checkbox"] {
   body .selected.selected {
     background-color: #c8a5b8;
   }
-
+  body .playing-sprite {
+    background-color: #58a7df;
+    color: black;
+  }
 }
 
 .playing-sprite {
@@ -181,16 +184,6 @@ input[type="checkbox"] {
   color: black;
 }
 
-#sprite84,
-#sprite77,
-#what-do-you-mean
-{
-  background-color: red;
-}
-
 .sprite label {
   width: 40px;
-}
-#time-is-money--זמן-הוא-כסף {
-  background-color: red;
 }

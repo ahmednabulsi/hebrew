@@ -134,8 +134,11 @@ Sprite.prototype = {
       }
       document.querySelector('.playing-sprite')?.classList?.remove('playing-sprite');
       var currentPlayingId = Object.keys(self._spriteMap)[index]?.replace(/ |\.|\'|\?|\’|\/|\;|\(|\)|\/|\,/g,'-');
-      document.getElementById(currentPlayingId)?.classList?.add('playing-sprite');
+      var currentElement = document.getElementById(currentPlayingId);
+      currentElement?.classList?.add('playing-sprite');
       
+      scrollToItem(currentElement);
+
       var id = self.play(Object.keys(self._spriteMap)[index]);
       self.sound.once('end', function() {
         if (resolePrmoise) {
@@ -1274,5 +1277,13 @@ async function playSelected () {
     await window[spritesObj]?.playSelected(spriteKey);
     await sleep(2000);
 
+  }
+}
+
+// Function to scroll to a specific item
+function scrollToItem(element) {
+  if (element) {
+    element.scrollIntoView({ behavior: 'auto' });
+    window.scrollBy(0, -500);
   }
 }
