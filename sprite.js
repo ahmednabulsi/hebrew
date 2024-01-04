@@ -1282,8 +1282,19 @@ async function playSelected () {
 
 // Function to scroll to a specific item
 function scrollToItem(element) {
+  // if (element) {
+  //   element.scrollIntoView({ behavior: 'auto' });
+  //   window.scrollBy(0, -500);
+  // }
+
   if (element) {
-    element.scrollIntoView({ behavior: 'auto' });
-    window.scrollBy(0, -500);
+    // Calculate the target position including the offset
+    const targetPosition = element.offsetTop - 500;
+  
+    // Scroll to the target position with smooth behavior
+    window.scrollTo({
+      top: targetPosition,
+      behavior: 'smooth'
+    });
   }
 }
