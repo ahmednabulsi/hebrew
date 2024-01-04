@@ -132,10 +132,37 @@ input[type="checkbox"] {
   width: 92%;
 }
 
-@media screen and (max-height: 480px), screen and (max-width: 670px) {
+@media only screen 
+  and (min-device-width: 380px) 
+  and (max-device-width: 844px) 
+  and (-webkit-min-device-pixel-ratio: 3) {
+  html body {
+    background-color: aliceblue;
+  }
   body {
     font-size: 75%;
   }
+  body .sprite {
+    flex: 0 0 calc(100% - 50px);
+    font-size: 30px;
+    padding: 25px 5px;
+    height: auto;
+    border-radius: 15px;
+    background-color: #c6ced7;
+    color: black;
+  }
+  body .sprite-label {
+      white-space: break-spaces;
+      margin-left: 50px;
+  }
+  body input[type="checkbox"] {
+    height: 50px;
+    width: 50px;
+  }
+  body .selected.selected {
+    background-color: #c8a5b8;
+  }
+
 }
 
 .playing-sprite {
