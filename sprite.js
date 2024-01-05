@@ -56,12 +56,12 @@ Sprite.prototype = {
 
     keys.forEach(function(key) {
       
-      document.querySelector('#' + key.replace(/ |\.|\'|\?|\’|\/|\;|\(|\)|\/|\,/g,'-'))?.querySelector('.sprite-label')?.addEventListener('click', function(e) {
+      document.querySelector('#' + key.replace(/ |\.|\'|\?|\’|\/|\;|\(|\)|\/|\,|\||\!/g,'-'))?.querySelector('.sprite-label')?.addEventListener('click', function(e) {
         self.play(key);
         self._currentPlayingEl = e.target;
       }, false);
 
-      document.querySelector('#' + key.replace(/ |\.|\'|\?|\’|\/|\;|\(|\)|\/|\,/g,'-'))?.querySelector('label')?.addEventListener('click', function(e) {
+      document.querySelector('#' + key.replace(/ |\.|\'|\?|\’|\/|\;|\(|\)|\/|\,|\||\!/g,'-'))?.querySelector('label')?.addEventListener('click', function(e) {
         var items = {};
         document.querySelectorAll('.sprite').forEach((item, index) => {
             console.log(item.querySelector('input').checked)
@@ -136,7 +136,7 @@ Sprite.prototype = {
         resolePrmoise = true;
       }
       document.querySelector('.playing-sprite')?.classList?.remove('playing-sprite');
-      var currentPlayingId = Object.keys(self._spriteMap)[index]?.replace(/ |\.|\'|\?|\’|\/|\;|\(|\)|\/|\,/g,'-');
+      var currentPlayingId = Object.keys(self._spriteMap)[index]?.replace(/ |\.|\'|\?|\’|\/|\;|\(|\)|\/|\,|\||\!/g,'-');
       var currentElement = document.getElementById(currentPlayingId);
       currentElement?.classList?.add('playing-sprite');
       
@@ -533,7 +533,7 @@ function addAudioSentances(name, spriteObjName, sentences, addToArray = true) {
   var spriteMap = {};
   Object.keys(sentences).forEach((key, index) => {
     var sprit = document.createElement('div');
-    sprit.setAttribute('id', key.replace(/ |\.|\'|\?|\’|\/|\;|\(|\)|\/|\,/g,'-'));
+    sprit.setAttribute('id', key.replace(/ |\.|\'|\?|\’|\/|\;|\(|\)|\/|\,|\||\!/g,'-'));
     sprit.setAttribute('class', 'sprite');
     sprit.innerHTML = `<label><input data-sprite-key="${key}" data-sprites-obj="${spriteObjName}" type="checkbox">
     </label><div class="sprite-label">[${sentanceIndex++}] ${key}</div>`;
@@ -555,7 +555,7 @@ function addAudioSentances(name, spriteObjName, sentences, addToArray = true) {
 }
 function addAudio (name, spriteObjName, label, time = 1) {
   var sprit = document.createElement('div');
-  sprit.setAttribute('id', name.replace(/ |\.|\'|\?|\’|\/|\;|\(|\)|\/|\,/g,'-'));
+  sprit.setAttribute('id', name.replace(/ |\.|\'|\?|\’|\/|\;|\(|\)|\/|\,|\||\!/g,'-'));
   sprit.setAttribute('class', 'sprite');
   sprit.innerHTML = `<label><input data-sprite-key="${name}" data-sprites-obj="${spriteObjName}" type="checkbox">
   </label><div class="sprite-label">[${sentanceIndex++}] ${label || name}</div>`;
@@ -886,6 +886,8 @@ var sprite500_200 = addAudioSentances('500_words_101-200', 'sprite500_200', {
   'glass, cup  kos  כוס': [129.14 * 1000 , 1 * 1000],
   'angry  ko-es  כועס': [130.35 * 1000 , 1 * 1000],
 }, false);
+
+
 // var sprite500_300 = addAudioSentances('500_words_201-300', 'sprite500_300', {
 //   'blue  כחול': [0 * 1000 , 1.2 * 1000],
 // 'chair  כיסא': [1.35 * 1000 , 1.2 * 1000],
@@ -1202,6 +1204,48 @@ var sprite500_200 = addAudioSentances('500_words_101-200', 'sprite500_200', {
 //   })
 // }
 
+var conversation1 = addAudioSentances('conversation1', 'conversation1', {
+  'Shawarma is the greatest invention that the Middle East brought to the world. | sha-war-ma hi ha-ham-tsa-a ha-khi to-va she-ha-miz-rakh ha-ti-khon he-vi la-o-lam. | שווארמה היא ההמצאה הכי טובה שהמזרח התיכון הביא לעולם.': 
+    [0 * 1000 , 4.88 * 1000],
+  'It was invented by Muhammad ben Shawarma in 1867. | him-tsi o-ta mu-kha-mad ben sha-war-ma be-e-lef shmo-na me-ot shi-shim ve-she-va. | המציא אותה מוחמד בן שווארמה ב 1867.': 
+    [5.35 * 1000 , 4.24 * 1000],
+  'Really? | be-e-met? | באמת?': [9.86 * 1000 , 1.1 * 1000],
+  'You really think so? I\'m kidding. | nir-e le-kha? a-ni tso-khek. | נראה לך? אני צוחק.': [11.40 * 1000 , 1.5 * 1000],
+
+  'I have no idea. | ein li mu-sag. | אין לי מושג.': [12.96 * 1000 , 1.14 * 1000],
+
+  'I think it originated in Turkey. | a-ni kho-shev she-ha-ma-kor she-la be-tur-ki-ya. | אני חושב שהמקור שלה בטורקיה.': 
+    [14.56 * 1000 , 2.47 * 1000],
+  'Could be. | ya-khol lih-yot. | יכול להיות.': [17.39 * 1000 , 1.3 * 1000],
+
+  'Why are you so obsessed with shawarma? | la-ma a-ta ob-se-si-vi al sha-war-ma? | למה אתה אובססיבי על שווארמה?': [18.78 * 1000 , 2 * 1000],
+  'It\'s really tasty! | hi te-i-ma la-a-la! | היא טעימה לאללה!': [21.1 * 1000 , 1.42 * 1000],
+  'Fresh pita with veggies and meat. | pi-ta tri-ya im ye-ra-kot u-ba-sar. | פיתה טרייה עם ירקות ובשר.': [22.57 * 1000 , 1.95 * 1000],
+  'What is better than that? | ma yo-ter tov mi-ze? | מה יותר טוב מזה?': [24.52 * 1000 , 1.5 * 1000],
+  'I\'m vegetarian. | a-ni tsim-kho-ni. | אני צמחוני.': [26 * 1000 , 1.2 * 1000],
+}, false);
+
+var conversation2 = addAudioSentances('conversation2', 'conversation2', {
+  'How long have you been studying Hebrew? | ka-ma zman a-ta kvar lo-med iv-rit? | כמה זמן אתה כבר לומד עברית?': 
+    [0 * 1000 , 2.61 * 1000],
+  'About three months. | shlo-sha kho-da-shim be-e-rekh. | שלושה חודשים בערך.': 
+    [2.75 * 1000 , 2.22 * 1000],
+  'Oh that\'s all? | ah, ze ha-kol? | אה, זה הכל?': [5.18 * 1000 , 1.7 * 1000],
+  'You speak well for someone that studied only three months. | a-ta me-da-ber ya-fe bish-vil e-khad she-la-mad rak shlo-sha kho-da-shim. | אתה מדבר יפה בשביל אחד שלמד רק שלושה חודשים.': 
+    [6.9 * 1000 , 3.93 * 1000],
+  'Thanks, I study two hours every day. | to-da, a-ni lo-med sha-a-ta-yim kol yom. | תודה, אני לומד שעתיים כל יום.': 
+    [10.78 * 1000 , 3.2 * 1000],
+  'How do you study? | eikh a-ta lo-med? | איך אתה לומד?': [14.45 * 1000 , 1.13 * 1000],
+  'Do you have a private teacher or something? | yesh le-kha mo-re pra-ti o ma-she-hu? | יש לך מורה פרטי או משהו?': 
+    [15.58 * 1000 , 2.08 * 1000],
+  'No, I study by myself. | lo, a-ni lo-med le-vad. | לא, אני לומד לבד.': 
+    [17.9 * 1000 , 1.96 * 1000],
+  'I read books, watch movies, and memorize music lyrics. | a-ni kor-e sfa-rim, tso-fe ba-sra-tim, ve-lo-med be-al pe mi-lot shi-rim. | אני קורא ספרים, צופה בסרטים ולומד בעל פה מילות שירים.': 
+    [19.8 * 1000 , 4.25 * 1000],
+  'I\'m very impressed. | hir-sham-ta o-ti. | הרשמת אותי.': [24.17 * 1000 , 1.36 * 1000],
+  'Keep up the good work. | tam-shikh ka-kha. | תמשיך ככה.': [25.55 * 1000 , 1.08 * 1000],
+}, false);
+
 function playSprits(sprites, index, delay, repeats) {
   if (index >= sprites.length) {
     return;
@@ -1233,6 +1277,12 @@ function playAll500(sprits) {
   currentAudio?.sound?.unload();
   // shuffleArray(spritesArray);
   playSprits([sprits], 0, 500, 3);
+}
+
+function playConversation(sprits) {
+  currentAudio?.sound?.unload();
+  // shuffleArray(spritesArray);
+  playSprits([sprits], 0, 1200, 3);
 }
 
 function playAll100(index) {

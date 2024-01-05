@@ -87,7 +87,7 @@ button {
 .sprite {
   top: 0;
   border: 1px solid rgba(0, 0, 0, 0.4);
-  height: 35px;
+  min-height: 35px;
   margin: 5px 5px;
   display: flex;
   align-items: center;
@@ -134,7 +134,7 @@ input[type="checkbox"] {
   /* position: absolute; */
   bottom: -33px;
   left: 0;
-  white-space: nowrap;
+  /* white-space: nowrap; */
   width: 92%;
   font-weight: 400;
 }
