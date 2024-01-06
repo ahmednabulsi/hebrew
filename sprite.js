@@ -606,97 +606,97 @@ function addAudio (name, spriteObjName, label, time = 1) {
 // });
 
 
-var sprite_5 = addAudioSentances('i wonder who will find sinwar socks', 'sprite_5', {
-  'i wonder who will find sinwar socks מעניין מי תמצא את הגרביים של יחיאה סינוואר': [0, 3 * 1000],
-});
+// var sprite_5 = addAudioSentances('i wonder who will find sinwar socks', 'sprite_5', {
+//   'i wonder who will find sinwar socks מעניין מי תמצא את הגרביים של יחיאה סינוואר': [0, 3 * 1000],
+// });
 
-var sprite_6 = addAudioSentances('do not know him', 'sprite_6', {
-  'I do not know אני לא מכיר': [0, 1 * 1000],
-  'you know me.  אתה מכיר אותי.': [1.1 * 1000, 1 * 1000],
-  // 'you do not know .  אתה לא מכיר.': [2.2 * 1000, 1.1 * 1000],
-  ' I do not know him.  אני לא מכיר אותו.': [3.5 * 1000, 1.2 * 1000],
-  'I don\'t know Ahmed.  אני לא מכיר את אחמד. ': [4.8 * 1000, 1.4 * 1000],
-});
+// var sprite_6 = addAudioSentances('do not know him', 'sprite_6', {
+//   'I do not know אני לא מכיר': [0, 1 * 1000],
+//   'you know me.  אתה מכיר אותי.': [1.1 * 1000, 1 * 1000],
+//   // 'you do not know .  אתה לא מכיר.': [2.2 * 1000, 1.1 * 1000],
+//   ' I do not know him.  אני לא מכיר אותו.': [3.5 * 1000, 1.2 * 1000],
+//   'I don\'t know Ahmed.  אני לא מכיר את אחמד. ': [4.8 * 1000, 1.4 * 1000],
+// });
 
-var sprite_7 = addAudioSentances('forgive me', 'sprite_7', {
-  'forgive me סלח לי': [0, .8 * 1000],
-  'do i know you? האם אני מכיר אותך.': [.88 * 1000, 1.5 * 1000],
-});
+// var sprite_7 = addAudioSentances('forgive me', 'sprite_7', {
+//   'forgive me סלח לי': [0, .8 * 1000],
+//   'do i know you? האם אני מכיר אותך.': [.88 * 1000, 1.5 * 1000],
+// });
 
-var sprite_8 = addAudioSentances('stupid', 'sprite_8', {
-  'stupid אתה טיפש': [0, .9 * 1000],
-  'dumb אתה מטוּמטם': [1 * 1000, 2 * 1000],
-});
+// var sprite_8 = addAudioSentances('stupid', 'sprite_8', {
+//   'stupid אתה טיפש': [0, .9 * 1000],
+//   'dumb אתה מטוּמטם': [1 * 1000, 2 * 1000],
+// });
 
-var sprite_9 = addAudioSentances('wait wait', 'sprite_9', {
-  'I saw it with my own eyes ראית במו עיניי': [0, 1.31 * 1000],
-  'all you do is killing כל מה שאתה עושה להרוג': [1.4 * 1000, 1.5 * 1000],
-  'what are you doing here למה אתה פה': [3 * 1000, 1.25 * 1000],
-  'lier שקרן': [4.3 * 1000, .8 * 1000],
-  'lies שקרים': [5.2 * 1000, .7 * 1000],
-  'wait wait רגע רגע': [6 * 1000, 1 * 1000],
-});
+// var sprite_9 = addAudioSentances('wait wait', 'sprite_9', {
+//   'I saw it with my own eyes ראית במו עיניי': [0, 1.31 * 1000],
+//   'all you do is killing כל מה שאתה עושה להרוג': [1.4 * 1000, 1.5 * 1000],
+//   'what are you doing here למה אתה פה': [3 * 1000, 1.25 * 1000],
+//   'lier שקרן': [4.3 * 1000, .8 * 1000],
+//   'lies שקרים': [5.2 * 1000, .7 * 1000],
+//   'wait wait רגע רגע': [6 * 1000, 1 * 1000],
+// });
 
-var sprite_10 = addAudio('smart', 'sprite_10', 'I am smart אני פיקח');
-var sprite_11 = addAudio('sure sure', 'sprite_11', 'sure sure בטח בטח');
-var sprite_12 = addAudio('I can not read', 'sprite_12', 'I can not read אני לא יכול לקרוא', 2);
-var sprite_13 = addAudio('I am sorry', 'sprite_13', 'I am sorry אני מצטער', 2);
-var sprite_14 = addAudio('do not know what are you talking about', 'sprite_14', 'idk what are you talking about אני לא יודע מה אתה מדבר', 2);
-var sprite_15 = addAudio('what do you mean', 'sprite_15', 'what do you mean למה את מתכוונת', 2);
-var sprite_16 = addAudioSentances('mesc', 'sprite_16', {
-  'He died for nothing הוא מת לחינם': [0, 1.04 * 1000],
-  'Shoes Yahya נעליים של': [1.2 * 1000, 1.5 * 1000],
-  'Mesage ending. Thanks Friend חברה תודה': [3 * 1000, 1 * 1000],
-});
-var sprite_17 = addAudioSentances('love', 'sprite_17', {
-  'I\'m kidding אני צוחק': [0, 1.04 * 1000],
-  'My Love אהבה שלי ': [1.2 * 1000, 1.2 * 1000],
-  'Why did you choose this city? למה בחרת בעיר הזו?': [2.5 * 1000, 1.6 * 1000],
-});
-var sprite_18 = addAudioSentances('why this country', 'sprite_18', {
-  'למה המדינה הזאת? why this country': [0, 2 * 1000],
-});
+// var sprite_10 = addAudio('smart', 'sprite_10', 'I am smart אני פיקח');
+// var sprite_11 = addAudio('sure sure', 'sprite_11', 'sure sure בטח בטח');
+// var sprite_12 = addAudio('I can not read', 'sprite_12', 'I can not read אני לא יכול לקרוא', 2);
+// var sprite_13 = addAudio('I am sorry', 'sprite_13', 'I am sorry אני מצטער', 2);
+// var sprite_14 = addAudio('do not know what are you talking about', 'sprite_14', 'idk what are you talking about אני לא יודע מה אתה מדבר', 2);
+// var sprite_15 = addAudio('what do you mean', 'sprite_15', 'what do you mean למה את מתכוונת', 2);
+// var sprite_16 = addAudioSentances('mesc', 'sprite_16', {
+//   'He died for nothing הוא מת לחינם': [0, 1.04 * 1000],
+//   'Shoes Yahya נעליים של': [1.2 * 1000, 1.5 * 1000],
+//   'Mesage ending. Thanks Friend חברה תודה': [3 * 1000, 1 * 1000],
+// });
+// var sprite_17 = addAudioSentances('love', 'sprite_17', {
+//   'I\'m kidding אני צוחק': [0, 1.04 * 1000],
+//   'My Love אהבה שלי ': [1.2 * 1000, 1.2 * 1000],
+//   'Why did you choose this city? למה בחרת בעיר הזו?': [2.5 * 1000, 1.6 * 1000],
+// });
+// var sprite_18 = addAudioSentances('why this country', 'sprite_18', {
+//   'למה המדינה הזאת? why this country': [0, 2 * 1000],
+// });
 
-var sprite_19 = addAudioSentances('tell me u joking', 'sprite_19', {
-  'תגיד אתה צוחק tell me you are joking?': [0, 4 * 1000],
-});
+// var sprite_19 = addAudioSentances('tell me u joking', 'sprite_19', {
+//   'תגיד אתה צוחק tell me you are joking?': [0, 4 * 1000],
+// });
 
-var sprite_20 = addAudioSentances('open-close', 'sprite_20', {
-  'what time do they close מתי הם נסגרים': [0, 1.2 * 1000],
-  'what time do they close מתי הם נפתחים': [1.3 * 1000, 1.5 * 1000],
-  'the weather is nice today מזג האוויר נחמד היום': [2.7 * 1000, 2 * 1000],
-});
-var sprite_21 = addAudioSentances('anyone knows when they open', 'sprite_21', {
-  'anyone know when they open? מישהו יודע מתי נפתחי?': [0, 2 * 1000],
-});
-var sprite_22 = addAudioSentances('Does anyone know when the cinema opens', 'sprite_22', {
-  'Does anyone know when the cinema opens? מתי נפתח הקולנוע מישהו יודע?': [0, 2 * 1000],
-});
-var sprite_23 = addAudioSentances('you think. i think. they think', 'sprite_23', {
-  'you think. i think. they think אתה חושב. אני חושב. הם חושב.': [0, 3 * 1000],
-});
+// var sprite_20 = addAudioSentances('open-close', 'sprite_20', {
+//   'what time do they close מתי הם נסגרים': [0, 1.2 * 1000],
+//   'what time do they close מתי הם נפתחים': [1.3 * 1000, 1.5 * 1000],
+//   'the weather is nice today מזג האוויר נחמד היום': [2.7 * 1000, 2 * 1000],
+// });
+// var sprite_21 = addAudioSentances('anyone knows when they open', 'sprite_21', {
+//   'anyone know when they open? מישהו יודע מתי נפתחי?': [0, 2 * 1000],
+// });
+// var sprite_22 = addAudioSentances('Does anyone know when the cinema opens', 'sprite_22', {
+//   'Does anyone know when the cinema opens? מתי נפתח הקולנוע מישהו יודע?': [0, 2 * 1000],
+// });
+// var sprite_23 = addAudioSentances('you think. i think. they think', 'sprite_23', {
+//   'you think. i think. they think אתה חושב. אני חושב. הם חושב.': [0, 3 * 1000],
+// });
 
-var sprite_24 = addAudioSentances('I think you should stay silent', 'sprite_24', {
-  'I think you should stay silent אני חושב שאתה צריך לשתוק': [0, 2 * 1000],
-});
+// var sprite_24 = addAudioSentances('I think you should stay silent', 'sprite_24', {
+//   'I think you should stay silent אני חושב שאתה צריך לשתוק': [0, 2 * 1000],
+// });
 
-var sprite_25 = addAudioSentances('you ask me', 'sprite_25', {
-  'are you asking me?  אתה שואל אותי.': [2 * 1000, 1.5 * 1000],
-  'you are asking BiBi, right? אתה שואל את ביבי נכון.': [0 * 1000, 2 * 1000],
-  // 'if you ask me  אם אתה שואל אותי.': [3.5 * 1000, 1.3 * 1000],
-});
-var sprite_26 = addAudioSentances('if you ask me', 'sprite_26', {
-  'if you ask me  אם אתה שואל אותי.': [0 * 1000, 1.5 * 1000],
-});
-var sprite_27 = addAudioSentances('time is money', 'sprite_27', {
-  'time is money  זמן הוא כסף': [0 * 1000, 2.5 * 1000],
-});
-var sprite_28 = addAudioSentances('are you rich', 'sprite_28', {
-  'are you rich אתה עשיר': [0 * 1000, 2.5 * 1000],
-});
-var sprite_29 = addAudioSentances('i am broke', 'sprite_29', {
-  'I am broke אני מרושש': [0 * 1000, 2.5 * 1000],
-});
+// var sprite_25 = addAudioSentances('you ask me', 'sprite_25', {
+//   'are you asking me?  אתה שואל אותי.': [2 * 1000, 1.5 * 1000],
+//   'you are asking BiBi, right? אתה שואל את ביבי נכון.': [0 * 1000, 2 * 1000],
+//   // 'if you ask me  אם אתה שואל אותי.': [3.5 * 1000, 1.3 * 1000],
+// });
+// var sprite_26 = addAudioSentances('if you ask me', 'sprite_26', {
+//   'if you ask me  אם אתה שואל אותי.': [0 * 1000, 1.5 * 1000],
+// });
+// var sprite_27 = addAudioSentances('time is money', 'sprite_27', {
+//   'time is money  זמן הוא כסף': [0 * 1000, 2.5 * 1000],
+// });
+// var sprite_28 = addAudioSentances('are you rich', 'sprite_28', {
+//   'are you rich אתה עשיר': [0 * 1000, 2.5 * 1000],
+// });
+// var sprite_29 = addAudioSentances('i am broke', 'sprite_29', {
+//   'I am broke אני מרושש': [0 * 1000, 2.5 * 1000],
+// });
 
 sentanceIndex = 1;
 var sprite500_100 = addAudioSentances('500_words_1-100', 'sprite500_100', {
@@ -918,121 +918,121 @@ var sprite500_200 = addAudioSentances('500_words_101-200', 'sprite500_200', {
 }, false);
 
 
-// var sprite500_300 = addAudioSentances('500_words_201-300', 'sprite500_300', {
-//   'blue | ka-khol | כחול': [0.00 * 1000 , 1 * 1000],
-//   'chair | ki-se | כיסא': [1.12 * 1000 , 1 * 1000],
-//   'classroom | ki-ta | כיתה': [2.30 * 1000 , 1 * 1000],
-//   'all | kol | כל': [3.5 * 1000 , 1 * 1000],
-//   'dog | ke-lev | כלב': [4.78 * 1000 , 1 * 1000],
-//   'nothing | klum | כלום': [6 * 1000 , 1 * 1000],
-//   'how much | ka-ma (or ka-ma) | כמה': [7.33 * 1000 , 1 * 1000],
-//   'yes | ken | כן': [8.63 * 1000 , 1 * 1000],
-//   'entrance | kni-sa | כניסה': [10 * 1000 , 1 * 1000],
-//   'money | ke-sef | כסף': [11.25 * 1000 , 1 * 1000],
-//   'ATM | kas-po-mat | כספומט': [12.6 * 1000 , 1 * 1000],
-//   'spoon | kaf | כף': [14.1 * 1000 , 1 * 1000],
-//   'hand | kaf yad | כף יד': [15.53 * 1000 , 1 * 1000],
-//   'foot | kaf re-gel | כף רגל': [16.9 * 1000 , 1 * 1000],
-//   'cabbage | kruv | כרוב': [18.5 * 1000 , 1 * 1000],
-//   'pillow | ka-rit | כרית': [20 * 1000 , 1 * 1000],
-//   'kosher | ka-sher | כשר': [21.4 * 1000 , 1 * 1000],
-//   'address | ktov-et | כתובת': [22.7 * 1000 , 1 * 1000],
-//   'orange (color) | ka-tom | כתום': [23.9 * 1000 , 1 * 1000],
-//   'to, for | le | ל...': [25.4 * 1000 , 1 * 1000],
-//   'no | lo | לא': [26.65 * 1000 , 1 * 1000],
-//   'slowly | le-at | לאט': [27.9 * 1000 , 1 * 1000],
-//   'heart | lev | לב': [29.1 * 1000 , 1 * 1000],
-//   'alone | le-vad | לבד': [30.30 * 1000 , 1 * 1000],
-//   'white | la-van | לבן': [31.5 * 1000 , 1 * 1000],
-//   'bless you (after s.o. sneezes) | liv-ri-ut | לבריאות': [32.95 * 1000 , 1 * 1000],
-//   'see you later | le-hit-ra-ot | להתראות': [34.6 * 1000 , 1 * 1000],
-//   'Cheers! | le-kha-yim | לחיים!': [36.1 * 1000 , 1 * 1000],
-//   'bread | le-khem | לחם': [37.46 * 1000 , 1 * 1000],
-//   'lizard | le-ta-a | לטאה': [38.7 * 1000 , 1 * 1000],
-//   'night | lai-la | לילה': [40 * 1000 , 0.8 * 1000],
-//   'lemon | li-mon | לימון': [41.3 * 1000 , 1 * 1000],
-//   'why | la-ma | למה': [42.7 * 1000 , 1 * 1000],
-//   'down | le-ma-ta | למטה': [44.13 * 1000 , 1 * 1000],
-//   'up | le-ma-la | למעלה': [45.40 * 1000 , 1 * 1000],
-//   'before | lif-nei | לפני': [46.7 * 1000 , 1 * 1000],
-//   'from | me | מ...': [47.9 * 1000 , 1 * 1000],
-//   'very | me-od | מאוד': [49.1 * 1000 , 1 * 1000],
-//   'late | me-u-khar | מאוחר': [50.38 * 1000 , 1 * 1000],
-//   'pastry | ma-a-fe | מאפה': [51.65 * 1000 , 1 * 1000],
-//   'bakery | ma-a-fi-ya | מאפייה': [52.85 * 1000 , 1 * 1000],
-//   'test/exam | miv-khan | מבחן': [54.25 * 1000 , 1 * 1000],
-//   'towel | ma-ge-vet | מגבת': [55.57 * 1000 , 1 * 1000],
-//   'desert | mid-bar | מדבר': [57.2 * 1000 , 1 * 1000],
-//   'country | me-di-na | מדינה': [58.60 * 1000 , 1 * 1000],
-//   'scientist | mad-an | מדען': [59.83 * 1000 , 1 * 1000],
-//   'printer | mad-pe-set | מדפסת': [61.13 * 1000 , 1 * 1000],
-//   'sidewalk | mid-ra-kha | מדרכה': [62.65 * 1000 , 1 * 1000],
-//   'what | ma | מה': [64.16 * 1000 , 1 * 1000],
-//   'fast | ma-hir | מהיר': [65.50 * 1000 , 1 * 1000],
-//   'engineer | me-han-des | מהנדס': [66.85 * 1000 , 1 * 1000],
-//   'quickly | ma-her | מהר': [68.25 * 1000 , 1 * 1000],
-//   'museum | mu-zei-on | מוזיאון': [69.60 * 1000 , 1 * 1000],
-//   'music | mu-zi-ka | מוזיקה': [71 * 1000 , 1 * 1000],
-//   'brain | mo-akh | מוח': [72.30 * 1000 , 1 * 1000],
-//   'ready | mu-khan | מוכן': [73.5 * 1000 , 1 * 1000],
-//   'taxi | mo-nit | מונית': [74.70 * 1000 , 1 * 1000],
-//   'early | muk-dam | מוקדם': [76 * 1000 , 1 * 1000],
-//   'teacher | mo-re, mo-ra | מורה': [77.32 * 1000 , 2.14 * 1000],
-//   'weather | me-zeg a-vir | מזג אוויר': [79.9 * 1000 , 1 * 1000],
-//   'air conditioner | maz-gan | מזגן': [81.5 * 1000 , 1 * 1000],
-//   'fork | maz-leg | מזלג': [82.95 * 1000 , 1 * 1000],
-//   'East | miz-rakh | מזרח': [84.4 * 1000 , 1 * 1000],
+var sprite500_300 = addAudioSentances('500_words_201-300', 'sprite500_300', {
+  'blue | ka-khol | כחול': [0.00 * 1000 , 1 * 1000],
+  'chair | ki-se | כיסא': [1.12 * 1000 , 1 * 1000],
+  'classroom | ki-ta | כיתה': [2.30 * 1000 , 1 * 1000],
+  'all | kol | כל': [3.5 * 1000 , 1 * 1000],
+  'dog | ke-lev | כלב': [4.78 * 1000 , 1 * 1000],
+  'nothing | klum | כלום': [6 * 1000 , 1 * 1000],
+  'how much | ka-ma (or ka-ma) | כמה': [7.33 * 1000 , 1 * 1000],
+  'yes | ken | כן': [8.63 * 1000 , 1 * 1000],
+  'entrance | kni-sa | כניסה': [10 * 1000 , 1 * 1000],
+  'money | ke-sef | כסף': [11.25 * 1000 , 1 * 1000],
+  'ATM | kas-po-mat | כספומט': [12.6 * 1000 , 1 * 1000],
+  'spoon | kaf | כף': [14.1 * 1000 , 1 * 1000],
+  'hand | kaf yad | כף יד': [15.53 * 1000 , 1 * 1000],
+  'foot | kaf re-gel | כף רגל': [16.9 * 1000 , 1 * 1000],
+  'cabbage | kruv | כרוב': [18.5 * 1000 , 1 * 1000],
+  'pillow | ka-rit | כרית': [20 * 1000 , 1 * 1000],
+  'kosher | ka-sher | כשר': [21.4 * 1000 , 1 * 1000],
+  'address | ktov-et | כתובת': [22.7 * 1000 , 1 * 1000],
+  'orange (color) | ka-tom | כתום': [23.9 * 1000 , 1 * 1000],
+  'to, for | le | ל...': [25.4 * 1000 , 1 * 1000],
+  'no | lo | לא': [26.65 * 1000 , 1 * 1000],
+  'slowly | le-at | לאט': [27.9 * 1000 , 1 * 1000],
+  'heart | lev | לב': [29.1 * 1000 , 1 * 1000],
+  'alone | le-vad | לבד': [30.30 * 1000 , 1 * 1000],
+  'white | la-van | לבן': [31.5 * 1000 , 1 * 1000],
+  'bless you (after s.o. sneezes) | liv-ri-ut | לבריאות': [32.95 * 1000 , 1 * 1000],
+  'see you later | le-hit-ra-ot | להתראות': [34.6 * 1000 , 1 * 1000],
+  'Cheers! | le-kha-yim | לחיים!': [36.1 * 1000 , 1 * 1000],
+  'bread | le-khem | לחם': [37.46 * 1000 , 1 * 1000],
+  'lizard | le-ta-a | לטאה': [38.7 * 1000 , 1 * 1000],
+  'night | lai-la | לילה': [40 * 1000 , 0.8 * 1000],
+  'lemon | li-mon | לימון': [41.3 * 1000 , 1 * 1000],
+  'why | la-ma | למה': [42.7 * 1000 , 1 * 1000],
+  'down | le-ma-ta | למטה': [44.13 * 1000 , 1 * 1000],
+  'up | le-ma-la | למעלה': [45.40 * 1000 , 1 * 1000],
+  'before | lif-nei | לפני': [46.7 * 1000 , 1 * 1000],
+  'from | me | מ...': [47.9 * 1000 , 1 * 1000],
+  'very | me-od | מאוד': [49.1 * 1000 , 1 * 1000],
+  'late | me-u-khar | מאוחר': [50.38 * 1000 , 1 * 1000],
+  'pastry | ma-a-fe | מאפה': [51.65 * 1000 , 1 * 1000],
+  'bakery | ma-a-fi-ya | מאפייה': [52.85 * 1000 , 1 * 1000],
+  'test/exam | miv-khan | מבחן': [54.25 * 1000 , 1 * 1000],
+  'towel | ma-ge-vet | מגבת': [55.57 * 1000 , 1 * 1000],
+  'desert | mid-bar | מדבר': [57.2 * 1000 , 1 * 1000],
+  'country | me-di-na | מדינה': [58.60 * 1000 , 1 * 1000],
+  'scientist | mad-an | מדען': [59.83 * 1000 , 1 * 1000],
+  'printer | mad-pe-set | מדפסת': [61.13 * 1000 , 1 * 1000],
+  'sidewalk | mid-ra-kha | מדרכה': [62.65 * 1000 , 1 * 1000],
+  'what | ma | מה': [64.16 * 1000 , 1 * 1000],
+  'fast | ma-hir | מהיר': [65.50 * 1000 , 1 * 1000],
+  'engineer | me-han-des | מהנדס': [66.85 * 1000 , 1 * 1000],
+  'quickly | ma-her | מהר': [68.25 * 1000 , 1 * 1000],
+  'museum | mu-zei-on | מוזיאון': [69.60 * 1000 , 1 * 1000],
+  'music | mu-zi-ka | מוזיקה': [71 * 1000 , 1 * 1000],
+  'brain | mo-akh | מוח': [72.30 * 1000 , 1 * 1000],
+  'ready | mu-khan | מוכן': [73.5 * 1000 , 1 * 1000],
+  'taxi | mo-nit | מונית': [74.70 * 1000 , 1 * 1000],
+  'early | muk-dam | מוקדם': [76 * 1000 , 1 * 1000],
+  'teacher | mo-re, mo-ra | מורה': [77.32 * 1000 , 2.14 * 1000],
+  'weather | me-zeg a-vir | מזג אוויר': [79.9 * 1000 , 1 * 1000],
+  'air conditioner | maz-gan | מזגן': [81.5 * 1000 , 1 * 1000],
+  'fork | maz-leg | מזלג': [82.95 * 1000 , 1 * 1000],
+  'East | miz-rakh | מזרח': [84.4 * 1000 , 1 * 1000],
 
-//   'notebook | makh-be-ret | מחברת': [85.8 * 1000 , 1 * 1000],
-//   'tomorrow | ma-khar | מחר': [87.2 * 1000 , 1 * 1000],
-//   'computer | makh-shev | מחשב': [88.75 * 1000 , 1 * 1000],
+  'notebook | makh-be-ret | מחברת': [85.8 * 1000 , 1 * 1000],
+  'tomorrow | ma-khar | מחר': [87.2 * 1000 , 1 * 1000],
+  'computer | makh-shev | מחשב': [88.75 * 1000 , 1 * 1000],
 
-//   'kitchen | mit-bakh | מטבח': [89.98 * 1000 , 1 * 1000],
-//   'fried | me-tu-gan | מטוגן': [91.45 * 1000 , 1 * 1000],
+  'kitchen | mit-bakh | מטבח': [89.98 * 1000 , 1 * 1000],
+  'fried | me-tu-gan | מטוגן': [91.45 * 1000 , 1 * 1000],
 
-//   'airplane | ma-tos | מטוס': [92.9 * 1000 , 1 * 1000],
-//   'meter | me-ter | מטר': [94.24  * 1000 , 1 * 1000],
-//   'who | mi | מי': [95.34  * 1000 , 1 * 1000],
-//   'bed | mi-ta | מיטה': [96.5  * 1000 , 1 * 1000],
+  'airplane | ma-tos | מטוס': [92.9 * 1000 , 1 * 1000],
+  'meter | me-ter | מטר': [94.24  * 1000 , 1 * 1000],
+  'who | mi | מי': [95.34  * 1000 , 1 * 1000],
+  'bed | mi-ta | מיטה': [96.5  * 1000 , 1 * 1000],
 
-//   'dictionary | mi-lon | מילון': [97.6  * 1000 , 1 * 1000],
-//   'water | ma-yim | מים': [98.9 * 1000 , 1 * 1000],
+  'dictionary | mi-lon | מילון': [97.6  * 1000 , 1 * 1000],
+  'water | ma-yim | מים': [98.9 * 1000 , 1 * 1000],
 
-//   'juice | mits | מיץ': [100.1 * 1000 , 1 * 1000],
-//   'microwave | mik-ro-gal | מיקרוגל': [101.2 * 1000 , 1 * 1000],
-//   'someone | mi-she-hu | מישהו': [102.75 * 1000 , 1 * 1000],
-//   'car | me-kho-nit | מכונית': [104.2 * 1000 , 1 * 1000],
+  'juice | mits | מיץ': [100.1 * 1000 , 1 * 1000],
+  'microwave | mik-ro-gal | מיקרוגל': [101.2 * 1000 , 1 * 1000],
+  'someone | mi-she-hu | מישהו': [102.75 * 1000 , 1 * 1000],
+  'car | me-kho-nit | מכונית': [104.2 * 1000 , 1 * 1000],
 
-//   'ugly | me-kho-ar | מכוער': [105.30 * 1000 , 1 * 1000],
-//   'pants | mikh-na-sa-yim | מכנסים': [106.65 * 1000 , 1 * 1000],
+  'ugly | me-kho-ar | מכוער': [105.30 * 1000 , 1 * 1000],
+  'pants | mikh-na-sa-yim | מכנסים': [106.65 * 1000 , 1 * 1000],
 
-//   'shorts | mikh-na-sa-yim k-tsar-im | מכנסים קצרים': [108.19 * 1000 , 1.2 * 1000],
-//   'full | ma-le | מלא': [109.74 * 1000 , 1 * 1000],
-//   'exciting | mal-hiv | מלהיב': [110.9 * 1000 , 1 * 1000],
+  'shorts | mikh-na-sa-yim k-tsar-im | מכנסים קצרים': [108.19 * 1000 , 1.2 * 1000],
+  'full | ma-le | מלא': [109.74 * 1000 , 1 * 1000],
+  'exciting | mal-hiv | מלהיב': [110.9 * 1000 , 1 * 1000],
 
-//   'hotel | ma-lon | מלון': [112.30 * 1000 , 1 * 1000],
-//   'salt | me-lakh | מלח': [113.8 * 1000 , 1 * 1000],
-//   'cucumber | me-la-fe-fon | מלפפון': [115.26 * 1000 , 1 * 1000],
+  'hotel | ma-lon | מלון': [112.30 * 1000 , 1 * 1000],
+  'salt | me-lakh | מלח': [113.8 * 1000 , 1 * 1000],
+  'cucumber | me-la-fe-fon | מלפפון': [115.26 * 1000 , 1 * 1000],
 
-//   'government | mem-sha-la | ממשלה': [116.75 * 1000 , 1 * 1000],
-//   'mango | man-go | מנגו': [118 * 1000 , 1 * 1000],
-//   'serving/portion | ma-na | מנה': [119.20 * 1000 , 1 * 1000],
-//   'manager | me-na-hel | מנהל': [120.56 * 1000 , 1 * 1000],
+  'government | mem-sha-la | ממשלה': [116.75 * 1000 , 1 * 1000],
+  'mango | man-go | מנגו': [118 * 1000 , 1 * 1000],
+  'serving/portion | ma-na | מנה': [119.20 * 1000 , 1 * 1000],
+  'manager | me-na-hel | מנהל': [120.56 * 1000 , 1 * 1000],
 
-//   'tunnel | min-ha-ra | מנהרה': [121.9 * 1000 , 1 * 1000],
-//   'restaurant | mis-a-da | מסעדה': [123.25 * 1000 , 1 * 1000],
+  'tunnel | min-ha-ra | מנהרה': [121.9 * 1000 , 1 * 1000],
+  'restaurant | mis-a-da | מסעדה': [123.25 * 1000 , 1 * 1000],
 
-//   'number | mis-par | מספר': [124.58 * 1000 , 1 * 1000],
-//   'smelly | mas-ri-akh | מסריח': [125.85 * 1000 , 1 * 1000],
+  'number | mis-par | מספר': [124.58 * 1000 , 1 * 1000],
+  'smelly | mas-ri-akh | מסריח': [125.85 * 1000 , 1 * 1000],
 
-//   'interesting | me-an-yen | מעניין': [127.22 * 1000 , 1 * 1000],
-//   'West | ma-a-rav | מערב': [128.6 * 1000 , 1 * 1000],
-//   'napkin | map-it | מפית': [129.8 * 1000 , 1 * 1000],
+  'interesting | me-an-yen | מעניין': [127.22 * 1000 , 1 * 1000],
+  'West | ma-a-rav | מערב': [128.6 * 1000 , 1 * 1000],
+  'napkin | map-it | מפית': [129.8 * 1000 , 1 * 1000],
 
-//   'key | maf-te-akh | מפתח': [131 * 1000 , 1 * 1000],
-//   'excellent | me-tsu-yan | מצוין': [132.43 * 1000 , 1 * 1000],
-//   'funny | mats-khik | מצחיק': [133.9 * 1000 , 1 * 1000],
-// }, false);
+  'key | maf-te-akh | מפתח': [131 * 1000 , 1 * 1000],
+  'excellent | me-tsu-yan | מצוין': [132.43 * 1000 , 1 * 1000],
+  'funny | mats-khik | מצחיק': [133.9 * 1000 , 1 * 1000],
+}, false);
 // var sprite500_400 = addAudioSentances('500_words_301-400', 'sprite500_400', {
 //   'camera  מצלמה': [0 * 1000 , 1.2 * 1000],
 // 'place  מקום': [1.35 * 1000 , 1.2 * 1000],
@@ -1359,7 +1359,7 @@ function resumeAudio() {
 }
 
 setTimeout(() => {
-  var selectedSprites = JSON.parse(localStorage.getItem('sprites'));
+  var selectedSprites = JSON.parse(localStorage.getItem('sprites')) || {};
   document.querySelectorAll('.sprite').forEach((item, index) => {
     item.querySelector('input').checked = selectedSprites[item.id] || false;
     if (selectedSprites[item.id]) {
