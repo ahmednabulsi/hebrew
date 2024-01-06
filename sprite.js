@@ -34,7 +34,9 @@ var Sprite = function(options) {
   // Create our audio sprite definition.
   self.sound = new Howl({
     src: options.src,
-    html5: true,
+    // html5: true,
+    loop: false,
+    preload: true,
     sprite: options.sprite
   });
   self.setupListeners();
