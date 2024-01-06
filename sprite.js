@@ -56,12 +56,19 @@ Sprite.prototype = {
 
     keys.forEach(function(key) {
       
-      document.querySelector('#' + key.replace(/ |\.|\'|\?|\’|\/|\;|\(|\)|\/|\,|\||\!/g,'-'))?.querySelector('.sprite-label')?.addEventListener('click', function(e) {
+      const currentEl = document.querySelector('#' + key.replace(/ |\.|\'|\?|\’|\/|\;|\(|\)|\/|\,|\||\!/g,'-'));
+      
+      currentEl?.querySelector('.sprite-label')?.addEventListener('click', function(e) {
         self.play(key);
         self._currentPlayingEl = e.target;
       }, false);
 
-      document.querySelector('#' + key.replace(/ |\.|\'|\?|\’|\/|\;|\(|\)|\/|\,|\||\!/g,'-'))?.querySelector('label')?.addEventListener('click', function(e) {
+      // currentEl?.querySelector('.keep-repeating')?.addEventListener('click', function(e) {
+      //   self.play(key);
+      //   self._currentPlayingEl = e.target;
+      // }, false);
+      
+      currentEl?.querySelector('label')?.addEventListener('click', function(e) {
         var items = {};
         document.querySelectorAll('.sprite').forEach((item, index) => {
             console.log(item.querySelector('input').checked)
@@ -354,7 +361,8 @@ function addSprites(sprite, spriteObjName, offset) {
     sprit.setAttribute('id', key);
     sprit.setAttribute('class', 'sprite');
     sprit.innerHTML = `<label><input data-sprite-key="${key}" data-sprites-obj="${spriteObjName}" type="checkbox">
-      </label><div class="sprite-label">${offset + index + 1}. ${sprite[key]}</div>`;
+      </label><div class="sprite-label">${offset + index + 1}. ${sprite[key]}</div><label style="display: none;"><input data-sprite-key="${key}" data-sprites-obj="${spriteObjName}" type="checkbox">
+      </label>`;
     spritContainer.appendChild(sprit);
     // if ((index + 1) % 25 == 0) {
     //   var hr = document.createElement('hr');
@@ -372,7 +380,7 @@ var spritesArray = [];
 
 var sprite_1 = new Sprite({
   src: ['100_phrases_1-25.mp3'],
-  buffer: true,
+  // buffer: true,
   sprite: {
     [combinedLabels[0]]: [0, 4 * 1000],
     [combinedLabels[1]]: [4 * 1000, 5 * 1000],
@@ -409,7 +417,7 @@ spritesArray.push(sprite_1);
 
 var sprite_2 = new Sprite({
   src: ['100_phrases_26-50.mp3'],
-  buffer: true,
+  // buffer: true,
   sprite: {
     [combinedLabels[25]]: [0, 8 * 1000],
     [combinedLabels[26]]: [16 * 1000, 7 * 1000],
@@ -447,7 +455,7 @@ spritesArray.push(sprite_2);
 
 var sprite_3 = new Sprite({
   src: ['100_phrases_51-75.mp3'],
-  buffer: true,
+  // buffer: true,
   sprite: {
     [combinedLabels[50]]: [0, 4 * 1000],
     [combinedLabels[51]]: [4 * 1000, 4 * 1000],
@@ -487,7 +495,7 @@ spritesArray.push(sprite_3);
 
 var sprite_4 = new Sprite({
   src: ['100_phrases_76-100.mp3'],
-  buffer: true,
+  // buffer: true,
   sprite: {
     [combinedLabels[75]]: [0, 6 * 1000],
     [combinedLabels[76]]: [6 * 1000, 7 * 1000],
@@ -536,14 +544,15 @@ function addAudioSentances(name, spriteObjName, sentences, addToArray = true) {
     sprit.setAttribute('id', key.replace(/ |\.|\'|\?|\’|\/|\;|\(|\)|\/|\,|\||\!/g,'-'));
     sprit.setAttribute('class', 'sprite');
     sprit.innerHTML = `<label><input data-sprite-key="${key}" data-sprites-obj="${spriteObjName}" type="checkbox">
-    </label><div class="sprite-label">[${sentanceIndex++}] ${key}</div>`;
+    </label><div class="sprite-label">[${sentanceIndex++}] ${key}</div><label><input class="keep-repeating" data-sprite-key="${key}" data-sprites-obj="${spriteObjName}" type="checkbox">
+    </label>`;
     spritContainer.appendChild(sprit);
     window[key] = sprit;
     spriteMap[key] = key;
   });
   var newSprite =  new Sprite({
     src: [name + '.mp3'],
-    buffer: true,
+    // buffer: true,
     sprite: sentences,
     spriteMap: spriteMap,
   });
@@ -558,13 +567,14 @@ function addAudio (name, spriteObjName, label, time = 1) {
   sprit.setAttribute('id', name.replace(/ |\.|\'|\?|\’|\/|\;|\(|\)|\/|\,|\||\!/g,'-'));
   sprit.setAttribute('class', 'sprite');
   sprit.innerHTML = `<label><input data-sprite-key="${name}" data-sprites-obj="${spriteObjName}" type="checkbox">
-  </label><div class="sprite-label">[${sentanceIndex++}] ${label || name}</div>`;
+  </label><div class="sprite-label">[${sentanceIndex++}] ${label || name}</div><label style="display: none;"><input data-sprite-key="${name}" data-sprites-obj="${spriteObjName}" type="checkbox">
+  </label>`;
   spritContainer.appendChild(sprit);
   window[name] = sprit;
   
   var newSprite = new Sprite({
     src: [name + '.mp3'],
-    buffer: true,
+    // buffer: true,
     sprite: {
       [name]: [0, time * 1000],
     },
@@ -576,6 +586,26 @@ function addAudio (name, spriteObjName, label, time = 1) {
 
   return newSprite;
 }
+
+
+var sprite_30 = addAudioSentances('can not ask them to die for nothing', 'sprite_30', {
+  'can not ask them to die for nothing | אני לא יכל לבקש מהם למות לשוא': [0, 2.49 * 1000],
+});
+
+var sprite_31 = addAudioSentances('another pillow', 'sprite_31', {
+  'I am sure you will be able to get another pillow | אני בטוחה שתוכלו להשיג כרית אחרת.': [0, 2.49 * 1000],
+});
+var sprite_32 = addAudioSentances('we are focusing', 'sprite_32', {
+  'we are focusing (on) | אנחנו מתמקדים': [0, 2.49 * 1000],
+});
+var sprite_33 = addAudioSentances('not ready to live like this', 'sprite_33', {
+  'not ready to live like this | לא מוכן ככה להמשיך לחיות': [0, 2.49 * 1000],
+});
+var sprite_34 = addAudioSentances('amazing', 'sprite_34', {
+  'amazing | מדהים מדהים מדהים!': [0, 2.49 * 1000],
+});
+
+
 var sprite_5 = addAudioSentances('i wonder who will find sinwar socks', 'sprite_5', {
   'i wonder who will find sinwar socks מעניין מי תמצא את הגרביים של יחיאה סינוואר': [0, 3 * 1000],
 });
@@ -1284,12 +1314,12 @@ var currentAudio;
 function playAllNew() {
   currentAudio?.sound?.unload();
   // shuffleArray(spritesArray);
-  playSprits(spritesArray.slice(4), 0, 500);
+  playSprits(spritesArray.slice(4), 0, 1500);
 }
 function playAll500(sprits) {
   currentAudio?.sound?.unload();
   // shuffleArray(spritesArray);
-  playSprits([sprits], 0, 500, 3);
+  playSprits([sprits], 0, 1000, 3);
 }
 
 function playConversation(sprits) {
@@ -1302,9 +1332,9 @@ function playAll100(index) {
   currentAudio?.sound?.unload();
   // shuffleArray(spritesArray);
   if (index) {
-    playSprits([spritesArray[index]], 0, 500, 1);
+    playSprits([spritesArray[index]], 0, 1000, 1);
   } else {
-    playSprits(spritesArray.slice(0, 4), 0, 500, 1);
+    playSprits(spritesArray.slice(0, 4), 0, 1000, 1);
   }
 }
 
@@ -1336,8 +1366,22 @@ setTimeout(() => {
       item.classList.add('selected');
     }
   });
-}, 50);
 
+  document.querySelectorAll('.keep-repeating').forEach((item, index) => {
+    item.addEventListener('click', async function(e) {
+      var selectedCheckbox = e.target;
+
+      // if(selectedCheckbox?.checked) {
+        var spritesObj = selectedCheckbox.getAttribute('data-sprites-obj');
+        var spriteKey = selectedCheckbox.getAttribute('data-sprite-key');
+        while (selectedCheckbox?.checked) {
+          await window[spritesObj]?.playSelected(spriteKey);
+          await sleep(1000);
+        }
+      // }
+    }, false);
+  });
+}, 50);
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));

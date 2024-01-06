@@ -137,6 +137,10 @@ input[type="checkbox"] {
   /* white-space: nowrap; */
   width: 92%;
   font-weight: 400;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 @media only screen 
