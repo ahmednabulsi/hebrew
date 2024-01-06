@@ -11,6 +11,7 @@
 // Cache references to DOM elements.
 
 Howler.usingWebAudio = true;
+Howler.html5PoolSize=100; 
 
 
 /**
@@ -588,115 +589,115 @@ function addAudio (name, spriteObjName, label, time = 1) {
 }
 
 
-// var sprite_30 = addAudioSentances('can not ask them to die for nothing', 'sprite_30', {
-//   'can not ask them to die for nothing | אני לא יכל לבקש מהם למות לשוא': [0, 2.49 * 1000],
-// });
+var sprite_30 = addAudioSentances('can not ask them to die for nothing', 'sprite_30', {
+  'can not ask them to die for nothing | אני לא יכל לבקש מהם למות לשוא': [0, 2.49 * 1000],
+});
 
-// var sprite_31 = addAudioSentances('another pillow', 'sprite_31', {
-//   'I am sure you will be able to get another pillow | אני בטוחה שתוכלו להשיג כרית אחרת.': [0, 2.49 * 1000],
-// });
-// var sprite_32 = addAudioSentances('we are focusing', 'sprite_32', {
-//   'we are focusing (on) | אנחנו מתמקדים': [0, 2.49 * 1000],
-// });
-// var sprite_33 = addAudioSentances('not ready to live like this', 'sprite_33', {
-//   'not ready to live like this | לא מוכן ככה להמשיך לחיות': [0, 2.49 * 1000],
-// });
-// var sprite_34 = addAudioSentances('amazing', 'sprite_34', {
-//   'amazing | מדהים מדהים מדהים!': [0, 2.49 * 1000],
-// });
+var sprite_31 = addAudioSentances('another pillow', 'sprite_31', {
+  'I am sure you will be able to get another pillow | אני בטוחה שתוכלו להשיג כרית אחרת.': [0, 2.49 * 1000],
+});
+var sprite_32 = addAudioSentances('we are focusing', 'sprite_32', {
+  'we are focusing (on) | אנחנו מתמקדים': [0, 2.49 * 1000],
+});
+var sprite_33 = addAudioSentances('not ready to live like this', 'sprite_33', {
+  'not ready to live like this | לא מוכן ככה להמשיך לחיות': [0, 2.49 * 1000],
+});
+var sprite_34 = addAudioSentances('amazing', 'sprite_34', {
+  'amazing | מדהים מדהים מדהים!': [0, 2.49 * 1000],
+});
 
 
-// var sprite_5 = addAudioSentances('i wonder who will find sinwar socks', 'sprite_5', {
-//   'i wonder who will find sinwar socks מעניין מי תמצא את הגרביים של יחיאה סינוואר': [0, 3 * 1000],
-// });
+var sprite_5 = addAudioSentances('i wonder who will find sinwar socks', 'sprite_5', {
+  'i wonder who will find sinwar socks מעניין מי תמצא את הגרביים של יחיאה סינוואר': [0, 3 * 1000],
+});
 
-// var sprite_6 = addAudioSentances('do not know him', 'sprite_6', {
-//   'I do not know אני לא מכיר': [0, 1 * 1000],
-//   'you know me.  אתה מכיר אותי.': [1.1 * 1000, 1 * 1000],
-//   // 'you do not know .  אתה לא מכיר.': [2.2 * 1000, 1.1 * 1000],
-//   ' I do not know him.  אני לא מכיר אותו.': [3.5 * 1000, 1.2 * 1000],
-//   'I don\'t know Ahmed.  אני לא מכיר את אחמד. ': [4.8 * 1000, 1.4 * 1000],
-// });
+var sprite_6 = addAudioSentances('do not know him', 'sprite_6', {
+  'I do not know אני לא מכיר': [0, 1 * 1000],
+  'you know me.  אתה מכיר אותי.': [1.1 * 1000, 1 * 1000],
+  // 'you do not know .  אתה לא מכיר.': [2.2 * 1000, 1.1 * 1000],
+  ' I do not know him.  אני לא מכיר אותו.': [3.5 * 1000, 1.2 * 1000],
+  'I don\'t know Ahmed.  אני לא מכיר את אחמד. ': [4.8 * 1000, 1.4 * 1000],
+});
 
-// var sprite_7 = addAudioSentances('forgive me', 'sprite_7', {
-//   'forgive me סלח לי': [0, .8 * 1000],
-//   'do i know you? האם אני מכיר אותך.': [.88 * 1000, 1.5 * 1000],
-// });
+var sprite_7 = addAudioSentances('forgive me', 'sprite_7', {
+  'forgive me סלח לי': [0, .8 * 1000],
+  'do i know you? האם אני מכיר אותך.': [.88 * 1000, 1.5 * 1000],
+});
 
-// var sprite_8 = addAudioSentances('stupid', 'sprite_8', {
-//   'stupid אתה טיפש': [0, .9 * 1000],
-//   'dumb אתה מטוּמטם': [1 * 1000, 2 * 1000],
-// });
+var sprite_8 = addAudioSentances('stupid', 'sprite_8', {
+  'stupid אתה טיפש': [0, .9 * 1000],
+  'dumb אתה מטוּמטם': [1 * 1000, 2 * 1000],
+});
 
-// var sprite_9 = addAudioSentances('wait wait', 'sprite_9', {
-//   'I saw it with my own eyes ראית במו עיניי': [0, 1.31 * 1000],
-//   'all you do is killing כל מה שאתה עושה להרוג': [1.4 * 1000, 1.5 * 1000],
-//   'what are you doing here למה אתה פה': [3 * 1000, 1.25 * 1000],
-//   'lier שקרן': [4.3 * 1000, .8 * 1000],
-//   'lies שקרים': [5.2 * 1000, .7 * 1000],
-//   'wait wait רגע רגע': [6 * 1000, 1 * 1000],
-// });
+var sprite_9 = addAudioSentances('wait wait', 'sprite_9', {
+  'I saw it with my own eyes ראית במו עיניי': [0, 1.31 * 1000],
+  'all you do is killing כל מה שאתה עושה להרוג': [1.4 * 1000, 1.5 * 1000],
+  'what are you doing here למה אתה פה': [3 * 1000, 1.25 * 1000],
+  'lier שקרן': [4.3 * 1000, .8 * 1000],
+  'lies שקרים': [5.2 * 1000, .7 * 1000],
+  'wait wait רגע רגע': [6 * 1000, 1 * 1000],
+});
 
-// var sprite_10 = addAudio('smart', 'sprite_10', 'I am smart אני פיקח');
-// var sprite_11 = addAudio('sure sure', 'sprite_11', 'sure sure בטח בטח');
-// var sprite_12 = addAudio('I can not read', 'sprite_12', 'I can not read אני לא יכול לקרוא', 2);
-// var sprite_13 = addAudio('I am sorry', 'sprite_13', 'I am sorry אני מצטער', 2);
-// var sprite_14 = addAudio('do not know what are you talking about', 'sprite_14', 'idk what are you talking about אני לא יודע מה אתה מדבר', 2);
-// var sprite_15 = addAudio('what do you mean', 'sprite_15', 'what do you mean למה את מתכוונת', 2);
-// var sprite_16 = addAudioSentances('mesc', 'sprite_16', {
-//   'He died for nothing הוא מת לחינם': [0, 1.04 * 1000],
-//   'Shoes Yahya נעליים של': [1.2 * 1000, 1.5 * 1000],
-//   'Mesage ending. Thanks Friend חברה תודה': [3 * 1000, 1 * 1000],
-// });
-// var sprite_17 = addAudioSentances('love', 'sprite_17', {
-//   'I\'m kidding אני צוחק': [0, 1.04 * 1000],
-//   'My Love אהבה שלי ': [1.2 * 1000, 1.2 * 1000],
-//   'Why did you choose this city? למה בחרת בעיר הזו?': [2.5 * 1000, 1.6 * 1000],
-// });
-// var sprite_18 = addAudioSentances('why this country', 'sprite_18', {
-//   'למה המדינה הזאת? why this country': [0, 2 * 1000],
-// });
+var sprite_10 = addAudio('smart', 'sprite_10', 'I am smart אני פיקח');
+var sprite_11 = addAudio('sure sure', 'sprite_11', 'sure sure בטח בטח');
+var sprite_12 = addAudio('I can not read', 'sprite_12', 'I can not read אני לא יכול לקרוא', 2);
+var sprite_13 = addAudio('I am sorry', 'sprite_13', 'I am sorry אני מצטער', 2);
+var sprite_14 = addAudio('do not know what are you talking about', 'sprite_14', 'idk what are you talking about אני לא יודע מה אתה מדבר', 2);
+var sprite_15 = addAudio('what do you mean', 'sprite_15', 'what do you mean למה את מתכוונת', 2);
+var sprite_16 = addAudioSentances('mesc', 'sprite_16', {
+  'He died for nothing הוא מת לחינם': [0, 1.04 * 1000],
+  'Shoes Yahya נעליים של': [1.2 * 1000, 1.5 * 1000],
+  'Mesage ending. Thanks Friend חברה תודה': [3 * 1000, 1 * 1000],
+});
+var sprite_17 = addAudioSentances('love', 'sprite_17', {
+  'I\'m kidding אני צוחק': [0, 1.04 * 1000],
+  'My Love אהבה שלי ': [1.2 * 1000, 1.2 * 1000],
+  'Why did you choose this city? למה בחרת בעיר הזו?': [2.5 * 1000, 1.6 * 1000],
+});
+var sprite_18 = addAudioSentances('why this country', 'sprite_18', {
+  'למה המדינה הזאת? why this country': [0, 2 * 1000],
+});
 
-// var sprite_19 = addAudioSentances('tell me u joking', 'sprite_19', {
-//   'תגיד אתה צוחק tell me you are joking?': [0, 4 * 1000],
-// });
+var sprite_19 = addAudioSentances('tell me u joking', 'sprite_19', {
+  'תגיד אתה צוחק tell me you are joking?': [0, 4 * 1000],
+});
 
-// var sprite_20 = addAudioSentances('open-close', 'sprite_20', {
-//   'what time do they close מתי הם נסגרים': [0, 1.2 * 1000],
-//   'what time do they close מתי הם נפתחים': [1.3 * 1000, 1.5 * 1000],
-//   'the weather is nice today מזג האוויר נחמד היום': [2.7 * 1000, 2 * 1000],
-// });
-// var sprite_21 = addAudioSentances('anyone knows when they open', 'sprite_21', {
-//   'anyone know when they open? מישהו יודע מתי נפתחי?': [0, 2 * 1000],
-// });
-// var sprite_22 = addAudioSentances('Does anyone know when the cinema opens', 'sprite_22', {
-//   'Does anyone know when the cinema opens? מתי נפתח הקולנוע מישהו יודע?': [0, 2 * 1000],
-// });
-// var sprite_23 = addAudioSentances('you think. i think. they think', 'sprite_23', {
-//   'you think. i think. they think אתה חושב. אני חושב. הם חושב.': [0, 3 * 1000],
-// });
+var sprite_20 = addAudioSentances('open-close', 'sprite_20', {
+  'what time do they close מתי הם נסגרים': [0, 1.2 * 1000],
+  'what time do they close מתי הם נפתחים': [1.3 * 1000, 1.5 * 1000],
+  'the weather is nice today מזג האוויר נחמד היום': [2.7 * 1000, 2 * 1000],
+});
+var sprite_21 = addAudioSentances('anyone knows when they open', 'sprite_21', {
+  'anyone know when they open? מישהו יודע מתי נפתחי?': [0, 2 * 1000],
+});
+var sprite_22 = addAudioSentances('Does anyone know when the cinema opens', 'sprite_22', {
+  'Does anyone know when the cinema opens? מתי נפתח הקולנוע מישהו יודע?': [0, 2 * 1000],
+});
+var sprite_23 = addAudioSentances('you think. i think. they think', 'sprite_23', {
+  'you think. i think. they think אתה חושב. אני חושב. הם חושב.': [0, 3 * 1000],
+});
 
-// var sprite_24 = addAudioSentances('I think you should stay silent', 'sprite_24', {
-//   'I think you should stay silent אני חושב שאתה צריך לשתוק': [0, 2 * 1000],
-// });
+var sprite_24 = addAudioSentances('I think you should stay silent', 'sprite_24', {
+  'I think you should stay silent אני חושב שאתה צריך לשתוק': [0, 2 * 1000],
+});
 
-// var sprite_25 = addAudioSentances('you ask me', 'sprite_25', {
-//   'are you asking me?  אתה שואל אותי.': [2 * 1000, 1.5 * 1000],
-//   'you are asking BiBi, right? אתה שואל את ביבי נכון.': [0 * 1000, 2 * 1000],
-//   // 'if you ask me  אם אתה שואל אותי.': [3.5 * 1000, 1.3 * 1000],
-// });
-// var sprite_26 = addAudioSentances('if you ask me', 'sprite_26', {
-//   'if you ask me  אם אתה שואל אותי.': [0 * 1000, 1.5 * 1000],
-// });
-// var sprite_27 = addAudioSentances('time is money', 'sprite_27', {
-//   'time is money  זמן הוא כסף': [0 * 1000, 2.5 * 1000],
-// });
-// var sprite_28 = addAudioSentances('are you rich', 'sprite_28', {
-//   'are you rich אתה עשיר': [0 * 1000, 2.5 * 1000],
-// });
-// var sprite_29 = addAudioSentances('i am broke', 'sprite_29', {
-//   'I am broke אני מרושש': [0 * 1000, 2.5 * 1000],
-// });
+var sprite_25 = addAudioSentances('you ask me', 'sprite_25', {
+  'are you asking me?  אתה שואל אותי.': [2 * 1000, 1.5 * 1000],
+  'you are asking BiBi, right? אתה שואל את ביבי נכון.': [0 * 1000, 2 * 1000],
+  // 'if you ask me  אם אתה שואל אותי.': [3.5 * 1000, 1.3 * 1000],
+});
+var sprite_26 = addAudioSentances('if you ask me', 'sprite_26', {
+  'if you ask me  אם אתה שואל אותי.': [0 * 1000, 1.5 * 1000],
+});
+var sprite_27 = addAudioSentances('time is money', 'sprite_27', {
+  'time is money  זמן הוא כסף': [0 * 1000, 2.5 * 1000],
+});
+var sprite_28 = addAudioSentances('are you rich', 'sprite_28', {
+  'are you rich אתה עשיר': [0 * 1000, 2.5 * 1000],
+});
+var sprite_29 = addAudioSentances('i am broke', 'sprite_29', {
+  'I am broke אני מרושש': [0 * 1000, 2.5 * 1000],
+});
 
 sentanceIndex = 1;
 var sprite500_100 = addAudioSentances('500_words_1-100', 'sprite500_100', {
