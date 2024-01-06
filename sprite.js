@@ -541,7 +541,7 @@ spritesArray.push(sprite_4);
 
 var sentanceIndex = 1;
 
-function addAudioSentances(name, spriteObjName, sentences, addToArray = true) {
+function addAudioSentances(name, spriteObjName, sentences, addToArray = true, rate = 1) {
   var spriteMap = {};
   Object.keys(sentences).forEach((key, index) => {
     var sprit = document.createElement('div');
@@ -563,6 +563,8 @@ function addAudioSentances(name, spriteObjName, sentences, addToArray = true) {
   if (addToArray) {
     spritesArray.push(newSprite);
   }
+
+  newSprite.sound.rate(rate);
 
   return newSprite;
 }
@@ -694,13 +696,34 @@ var sprite_26 = addAudioSentances('if you ask me', 'sprite_26', {
 });
 var sprite_27 = addAudioSentances('time is money', 'sprite_27', {
   'time is money  זמן הוא כסף': [0 * 1000, 2.5 * 1000],
-});
+}, true, 1.3);
 var sprite_28 = addAudioSentances('are you rich', 'sprite_28', {
   'are you rich אתה עשיר': [0 * 1000, 2.5 * 1000],
-});
+}, true, 1.3);
 var sprite_29 = addAudioSentances('i am broke', 'sprite_29', {
-  'I am broke אני מרושש': [0 * 1000, 2.5 * 1000],
-});
+  'I am broke אני מרושש': [0 * 1000, 2 * 1000],
+}, true, 1.3);
+var sprite_59 = addAudioSentances('i am debet', 'sprite_59', {
+  'i am debet | אני בחוב': [0 * 1000, 2 * 1000],
+}, true, 1.3);
+var sprite_60 = addAudioSentances('do you have money', 'sprite_60', {
+  'do you have money | יש לך כסף': [0 * 1000, 2 * 1000],
+}, true, 1.3);
+var sprite_61 = addAudioSentances('i wanna be rich', 'sprite_61', {
+  'i wanna be rich | אני רוצה להיות עשיר': [0 * 1000, 2 * 1000],
+}, true, 1.3);
+var sprite_62 = addAudioSentances('i do not have cash', 'sprite_62', {
+  'i do not have cash | אין לי כסף מזומן': [0 * 1000, 2 * 1000],
+}, true, 1.3);
+var sprite_63 = addAudioSentances('how much i owe you', 'sprite_63', {
+  'how much i owe you | כמה אני חייב לך': [0 * 1000, 2 * 1000],
+}, true, 1.3);
+var sprite_64 = addAudioSentances('you are paying today', 'sprite_64', {
+  'you are paying today | אתה משלם היום': [0 * 1000, 2 * 1000],
+}, true, 1.3);
+var sprite_65 = addAudioSentances('do not trust him', 'sprite_65', {
+  'do not trust him | אל תסמכו עליו': [0 * 1000, 2 * 1000],
+}, true, 1.1);
 
 sentanceIndex = 1;
 var sprite500_100 = addAudioSentances('500_words_1-100', 'sprite500_100', {
