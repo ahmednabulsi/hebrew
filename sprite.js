@@ -11,6 +11,7 @@
 // Cache references to DOM elements.
 
 Howler.usingWebAudio = true;
+Howler.autoUnlock = true;
 Howler.html5PoolSize=100; 
 
 
@@ -381,7 +382,7 @@ var spritesArray = [];
 
 var sprite_1 = new Sprite({
   src: ['100_phrases_1-25.mp3'],
-  // buffer: true,
+  buffer: true,
   sprite: {
     [combinedLabels[0]]: [0, 4 * 1000],
     [combinedLabels[1]]: [4 * 1000, 5 * 1000],
@@ -418,7 +419,7 @@ spritesArray.push(sprite_1);
 
 var sprite_2 = new Sprite({
   src: ['100_phrases_26-50.mp3'],
-  // buffer: true,
+  buffer: true,
   sprite: {
     [combinedLabels[25]]: [0, 8 * 1000],
     [combinedLabels[26]]: [16 * 1000, 7 * 1000],
@@ -456,7 +457,7 @@ spritesArray.push(sprite_2);
 
 var sprite_3 = new Sprite({
   src: ['100_phrases_51-75.mp3'],
-  // buffer: true,
+  buffer: true,
   sprite: {
     [combinedLabels[50]]: [0, 4 * 1000],
     [combinedLabels[51]]: [4 * 1000, 4 * 1000],
@@ -496,7 +497,7 @@ spritesArray.push(sprite_3);
 
 var sprite_4 = new Sprite({
   src: ['100_phrases_76-100.mp3'],
-  // buffer: true,
+  buffer: true,
   sprite: {
     [combinedLabels[75]]: [0, 6 * 1000],
     [combinedLabels[76]]: [6 * 1000, 7 * 1000],
@@ -553,7 +554,7 @@ function addAudioSentances(name, spriteObjName, sentences, addToArray = true) {
   });
   var newSprite =  new Sprite({
     src: [name + '.mp3'],
-    // buffer: true,
+    buffer: true,
     sprite: sentences,
     spriteMap: spriteMap,
   });
@@ -575,7 +576,7 @@ function addAudio (name, spriteObjName, label, time = 1) {
   
   var newSprite = new Sprite({
     src: [name + '.mp3'],
-    // buffer: true,
+    buffer: true,
     sprite: {
       [name]: [0, time * 1000],
     },
