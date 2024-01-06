@@ -176,6 +176,7 @@ input[type="checkbox"] {
   body .sprite-label {
       white-space: break-spaces;
       margin-left: 50px;
+      width: 82%;
   }
   body input[type="checkbox"] {
     height: 50px;
