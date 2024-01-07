@@ -1380,9 +1380,11 @@ async function playSelected () {
 
     await window[spritesObj]?.playSelected(spriteKey);
     await sleep(1000);
+    await window[spritesObj]?.playSelected(spriteKey);
+    await sleep(1000);
     // infinite loop
     if (i+1 >= selectedCheckboxes.length) {
-      i = 0;
+      i = -1;
     }
   }
 }
