@@ -160,7 +160,7 @@ Sprite.prototype = {
         }
         if (repeat && repeated + 1 < repeat) { // + 1 because it's played once before the end callback
           if (delay) {
-            setTimeout(() => {
+            Sprite.CurrentTimerId = setTimeout(() => {
               // no indx + 1 to repeat
               self.playAll(index, delay, repeat, repeated + 1).then((result) => {
                 resolve(result);
@@ -173,7 +173,7 @@ Sprite.prototype = {
           }
         } else if (index + 1 < Object.keys(self._spriteMap).length) {
           if (delay) {
-            setTimeout(() => {
+            Sprite.CurrentTimerId = setTimeout(() => {
               // index + 1 for next sprit
               self.playAll(index + 1, delay, repeat, 0).then((result) => {
                 resolve(result);
@@ -1313,6 +1313,7 @@ var conversation2 = addAudioSentances('conversation2', 'conversation2', {
   'Keep up the good work. | tam-shikh ka-kha. | תמשיך ככה.': [25.55 * 1000 , 1.08 * 1000],
 }, false);
 
+var playingTimerId;
 function playSprits(sprites, index, delay, repeats) {
   if (index >= sprites.length) {
     return;
@@ -1320,7 +1321,7 @@ function playSprits(sprites, index, delay, repeats) {
   currentAudio = sprites[index];
   var repeatTimes = repeats || (currentAudio._sprite.length > 10 ? 1 : 2);
   currentAudio.playAll(0, delay, repeatTimes).then(() => {
-    setTimeout(() => {
+    playingTimerId = setTimeout(() => {
       playSprits(sprites, index + 1, delay, repeatTimes);
     }, delay);
   });
@@ -1336,23 +1337,31 @@ function shuffleArray(array) {
 
 var currentAudio;
 function playAllNew() {
+  clearTimeout(playingTimerId)
+  clearTimeout(Sprite.CurrentTimerId);
   Howler.stop();
   // shuffleArray(spritesArray);
   playSprits(spritesArray.slice(4), 0, 1500);
 }
 function playAll500(sprits) {
+  clearTimeout(playingTimerId)
+  clearTimeout(Sprite.CurrentTimerId);
   Howler.stop();
   // shuffleArray(spritesArray);
   playSprits([sprits], 0, 1000, 3);
 }
 
 function playConversation(sprits) {
+  clearTimeout(playingTimerId)
+  clearTimeout(Sprite.CurrentTimerId);
   Howler.stop();
   // shuffleArray(spritesArray);
   playSprits([sprits], 0, 1200, 3);
 }
 
 function playAll100(index) {
+  clearTimeout(playingTimerId)
+  clearTimeout(Sprite.CurrentTimerId);
   Howler.stop();
   // shuffleArray(spritesArray);
   if (index) {
@@ -1371,7 +1380,10 @@ async function playSelected () {
 
     await window[spritesObj]?.playSelected(spriteKey);
     await sleep(1000);
-
+    // infinite loop
+    if (i+1 >= selectedCheckboxes.length) {
+      i = 0;
+    }
   }
 }
 
