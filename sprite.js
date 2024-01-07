@@ -1378,6 +1378,10 @@ async function playSelected () {
     var spritesObj = selectedCheckboxes[i].getAttribute('data-sprites-obj');
     var spriteKey = selectedCheckboxes[i].getAttribute('data-sprite-key');
 
+    document.querySelector('.playing-sprite')?.classList?.remove('playing-sprite');
+    selectedCheckboxes[i].closest('.sprite').classList.add('playing-sprite');
+    scrollToItem(selectedCheckboxes[i]);
+    
     await window[spritesObj]?.playSelected(spriteKey);
     await sleep(1000);
     await window[spritesObj]?.playSelected(spriteKey);
