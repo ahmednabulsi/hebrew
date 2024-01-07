@@ -1336,24 +1336,24 @@ function shuffleArray(array) {
 
 var currentAudio;
 function playAllNew() {
-  currentAudio?.sound?.unload();
+  currentAudio?.sound?.stop();
   // shuffleArray(spritesArray);
   playSprits(spritesArray.slice(4), 0, 1500);
 }
 function playAll500(sprits) {
-  currentAudio?.sound?.unload();
+  currentAudio?.sound?.stop();
   // shuffleArray(spritesArray);
   playSprits([sprits], 0, 1000, 3);
 }
 
 function playConversation(sprits) {
-  currentAudio?.sound?.unload();
+  currentAudio?.sound?.stop();
   // shuffleArray(spritesArray);
   playSprits([sprits], 0, 1200, 3);
 }
 
 function playAll100(index) {
-  currentAudio?.sound?.unload();
+  currentAudio?.sound?.stop();
   // shuffleArray(spritesArray);
   if (index) {
     playSprits([spritesArray[index]], 0, 1000, 1);
