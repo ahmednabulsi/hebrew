@@ -14,7 +14,7 @@ Howler.usingWebAudio = true;
 Howler.autoUnlock = true;
 Howler.html5PoolSize=100; 
 
-
+var currentIndex = undefined;
 /**
  * Sprite class containing the state of our sprites to play and their progress.
  * @param {Object} options Settings to pass into and setup the sound and visuals.
@@ -65,6 +65,8 @@ Sprite.prototype = {
       currentEl?.querySelector('.sprite-label')?.addEventListener('click', function(e) {
         self.play(key);
         self._currentPlayingEl = e.target;
+
+        currentIndex = parseInt(e.target.getAttribute('data-sprite-index'));
       }, false);
 
       // currentEl?.querySelector('.keep-repeating')?.addEventListener('click', function(e) {
@@ -172,15 +174,26 @@ Sprite.prototype = {
             });
           }
         } else if (index + 1 < Object.keys(self._spriteMap).length) {
+          
           if (delay) {
             Sprite.CurrentTimerId = setTimeout(() => {
               // index + 1 for next sprit
-              self.playAll(index + 1, delay, repeat, 0).then((result) => {
+              let nextIndex = index + 1;
+              if (currentIndex) {
+                nextIndex = currentIndex;
+                currentIndex = undefined;
+              }
+              self.playAll(nextIndex, delay, repeat, 0).then((result) => {
                 resolve(result);
               });
             }, delay);
           } else {
-            self.playAll(index + 1, delay, repeat, 0).then((result) => {
+            let nextIndex = index + 1;
+            if (currentIndex) {
+              nextIndex = currentIndex;
+              currentIndex = undefined;
+            }
+            self.playAll(nextIndex, delay, repeat, 0).then((result) => {
               resolve(result);
             });
           }
@@ -548,7 +561,7 @@ function addAudioSentances(name, spriteObjName, sentences, addToArray = true, ra
     sprit.setAttribute('id', key.replace(/ |\.|\'|\?|\’|\/|\;|\(|\)|\/|\,|\||\!/g,'-'));
     sprit.setAttribute('class', 'sprite');
     sprit.innerHTML = `<label><input data-sprite-key="${key}" data-sprites-obj="${spriteObjName}" type="checkbox">
-    </label><div class="sprite-label">[${sentanceIndex++}] ${key}</div><label><input class="keep-repeating" data-sprite-key="${key}" data-sprites-obj="${spriteObjName}" type="checkbox">
+    </label><div class="sprite-label" data-sprite-index="${index}">[${sentanceIndex++}] ${key}</div><label><input class="keep-repeating" data-sprite-key="${key}" data-sprites-obj="${spriteObjName}" type="checkbox">
     </label>`;
     spritContainer.appendChild(sprit);
     window[key] = sprit;
@@ -1348,7 +1361,7 @@ function playAll500(sprits) {
   clearTimeout(Sprite.CurrentTimerId);
   Howler.stop();
   // shuffleArray(spritesArray);
-  playSprits([sprits], 0, 1000, 3);
+  playSprits([sprits], 0, 500, 1);
 }
 
 function playConversation(sprits) {
