@@ -315,6 +315,15 @@ function addAudio (name, spriteObjName, label, time = 1) {
 //   'The captain must not be replaced. - אסור להחליף את הקברניט.' : [ 17.3 * 1000, 2 * 1000 ],
 // });
 
+var s6 = addAudioSentances('s6', 's6', {
+  'the smartest. - הכי חכם.': [ 0 * 1000 , 1.1 * 1000],
+  'The biggest house. - הבית הגדול ביותר.': [ 1.1 * 1000 , 1.9 * 1000],
+  'It\'s really you in the picture. - זה באמת אתה בתמונה.': [ 3 * 1000 , 1.65 * 1000],
+  'Really good. - ממש טוב.': [ 4.7 * 1000 , 1.12 * 1000],
+  'Definately not. - ממש לא.': [ 5.9 * 1000 , 0.96 * 1000],
+  'What do you think. - מה אתם חושבים.': [ 6.9 * 1000 , 1.4 * 1000],
+});
+
 var s3 = addAudioSentances('s3', 's3', {
   'شو اخبارك ؟. - מה העניינים. ' : [ 0 * 1000, 1.16 * 1000 ],
   'God bless every day. - ברוך השם יום יום.' : [ 1.2 * 1000, 1.9 * 1000 ],
@@ -330,7 +339,7 @@ var s3 = addAudioSentances('s3', 's3', {
   'The captain must not be replaced. - אסור להחליף את הקברניט.' : [ 19.4 * 1000, 2.1 * 1000 ],
 });
 
-var s4 = addAudioSentances('s4.1', 's4', {
+var s4 = addAudioSentances('s4', 's4', {
   'This ice cream is really good. - הגלידה הזאת ממש טובה.': [ 0 * 1000, 1.95 * 1000 ],
   'The concert was great. - הקונצרט היה נהדר.': [ 1.95 * 1000, 1.95 * 1000 ],
   'This falafel is not bad at all. - הפלאפל הזה לא רע בכלל.': [ 4 * 1000, 2.2 * 1000 ],
@@ -343,6 +352,10 @@ var s4 = addAudioSentances('s4.1', 's4', {
   'Cats are mighty and that\'s a fact. - חתולים הם אדירים וזאת עובדה.': [ 18.87 * 1000, 2.4 * 1000 ],
   'I can fix your computer. - אני יכול לתקן לך את המחשב.': [ 21.4 * 1000, 2.33 * 1000 ],
   'you make a mess - אתה עושה בלאגן.': [ 23.8 * 1000, 1.6 * 1000 ],
+});
+
+var s5 = addAudioSentances('biggest lier', 's5', {
+  'The most liar in the world. - האיש הכי שַׁקְרָן בעולם.': [ 0 * 1000, 1.95 * 1000 ],
 });
 
 
