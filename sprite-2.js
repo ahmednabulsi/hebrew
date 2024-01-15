@@ -316,7 +316,7 @@ function addAudio (name, spriteObjName, label, time = 1) {
 // });
 
 var s3 = addAudioSentances('s3', 's3', {
-  'What\'s up. - מה העניינים. ' : [ 0 * 1000, 1.16 * 1000 ],
+  'شو اخبارك ؟. - מה העניינים. ' : [ 0 * 1000, 1.16 * 1000 ],
   'God bless every day. - ברוך השם יום יום.' : [ 1.2 * 1000, 1.9 * 1000 ],
   'do you want something to drink - אתה רוצה לשתות משהו.' : [ 3.13 * 1000, 1.8 * 1000 ],
   'not for now. - בינתיים לא.' : [ 5 * 1000, 1.25 * 1000 ],
@@ -329,6 +329,22 @@ var s3 = addAudioSentances('s3', 's3', {
   'What are you doing? - מה אתה עושה?' : [ 18.3 * 1000, 1 * 1000 ],
   'The captain must not be replaced. - אסור להחליף את הקברניט.' : [ 19.4 * 1000, 2.1 * 1000 ],
 });
+
+var s4 = addAudioSentances('s4.1', 's4', {
+  'This ice cream is really good. - הגלידה הזאת ממש טובה.': [ 0 * 1000, 1.95 * 1000 ],
+  'The concert was great. - הקונצרט היה נהדר.': [ 1.95 * 1000, 1.95 * 1000 ],
+  'This falafel is not bad at all. - הפלאפל הזה לא רע בכלל.': [ 4 * 1000, 2.2 * 1000 ],
+  'can i have water please - אפשר לקבל מים בבקשה.': [ 6.3 * 1000, 2.2 * 1000 ],
+  'wait in line - לחכות בתור.': [ 8.5 * 1000, 1.44 * 1000 ],
+  'I waited hours in line for falafel. - חיכיתי שעות בתור לפלאפל.': [ 9.96 * 1000, 2.4 * 1000 ],
+  'I have no money, I can\'t buy anything. - אין לי כסף אני לא יכול לקנות כלום.': [ 12.38 * 1000, 2.55 * 1000 ],
+  'how could i know - איך הייתי יכול לדעת. ': [ 15 * 1000, 1.9 * 1000 ],
+  'what is your apartment number - מה מספר הדירה שלך.': [ 17 * 1000, 1.88 * 1000 ],
+  'Cats are mighty and that\'s a fact. - חתולים הם אדירים וזאת עובדה.': [ 18.87 * 1000, 2.4 * 1000 ],
+  'I can fix your computer. - אני יכול לתקן לך את המחשב.': [ 21.4 * 1000, 2.33 * 1000 ],
+  'you make a mess - אתה עושה בלאגן.': [ 23.8 * 1000, 1.6 * 1000 ],
+});
+
 
 
 var s1 = addAudioSentances('s1', 's1', {
