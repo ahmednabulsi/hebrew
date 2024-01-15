@@ -683,7 +683,7 @@ function playAllNew() {
   clearTimeout(Sprite.CurrentTimerId);
   Howler.stop();
   // shuffleArray(spritesArray);
-  playSprits(spritesArray.slice(0, spritesArray.length - 2), 0, 1000);
+  playSprits(spritesArray.slice(0, spritesArray.length - 1), 0, 1000);
 }
 
 function playAllVerbs() {
