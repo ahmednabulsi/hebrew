@@ -80,7 +80,7 @@ Sprite.prototype = {
             console.log(item.querySelector('input').checked)
             items[item.id] = item.querySelector('input').checked
         });
-        localStorage.setItem('sprites', JSON.stringify(items));
+        localStorage.setItem('sprites2', JSON.stringify(items));
       }, false);
 
     });
@@ -657,7 +657,7 @@ function resumeAudio() {
 }
 
 setTimeout(() => {
-  var selectedSprites = JSON.parse(localStorage.getItem('sprites')) || {};
+  var selectedSprites = JSON.parse(localStorage.getItem('sprites2')) || {};
   document.querySelectorAll('.sprite').forEach((item, index) => {
     item.querySelector('input').checked = selectedSprites[item.id] || false;
     if (selectedSprites[item.id]) {
@@ -710,7 +710,7 @@ function playAllNew() {
   clearTimeout(Sprite.CurrentTimerId);
   Howler.stop();
   // shuffleArray(spritesArray);
-  playSprits(spritesArray.slice(0, spritesArray.length - 1), 0, 1000);
+  playSprits(spritesArray.slice(0, spritesArray.length - 1), 0, 1500);
 }
 
 function playAllVerbs() {
