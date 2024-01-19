@@ -315,6 +315,33 @@ function addAudio (name, spriteObjName, label, time = 1) {
 //   'The captain must not be replaced. - אסור להחליף את הקברניט.' : [ 17.3 * 1000, 2 * 1000 ],
 // });
 
+var s9 = addAudioSentances('s9', 's9', {
+  'Tell him not to forget to bring food - תגיד לו שלא ישכח להביא אוכל': [ 0 * 1000 , 2 * 1000],
+});
+
+var s8 = addAudioSentances('s8', 's8', {
+  'انا بأفضل حال - .שלומי מצויין' : [ 0 * 1000, 1.17 * 1000 ],
+  'You should try to think about other people  - .צריך לנסות לחשוב גם על אנשים אחרים' : [ 1.2 * 1000, 3 * 1000 ],
+  'I don\'t want to leave the house - .אני לא רוצה לעזוב הבית' : [ 4.26 * 1000, 1.83 * 1000 ],
+  'لا تترك الدرابزين - .אל תעזוב את מעקה' : [ 6.2 * 1000, 1.57 * 1000 ],
+  'Open the window (asking female) - .תפתחי את החלון חם פה' : [ 7.8 * 1000, 1.85 * 1000 ],
+  'The way home is very long - .הדרך הביתה ארוכה מאוד' : [ 9.83 * 1000, 2 * 1000 ],
+  'I went with my friend to the movie - .הלכתי עם החבר שלי הסרט' : [ 12 * 1000, 2.13 * 1000 ],
+  'الى اين انت ذاهب؟ - .לאן אתה הולך?' : [ 14.24 * 1000, 1.25 * 1000 ],
+  '.קוראים לי אחמד - Informal اسمي أحمد' : [ 15.56 * 1000, 1.2 * 1000 ],
+  'I grew up in Nablus - .גדלתי בשכם' : [ 16.8 * 1000, 1.18 * 1000 ],
+  'i\'m sleepy - .אני ישנוני' : [ 18 * 1000, 0.83 * 1000 ],
+  'إحدى هواياتي هي القراءة - .אחד התחביבים שלי הוא קריאה' : [ 18.94 * 1000, 2 * 1000 ],
+  'أنا أستمتع بسماع الموسيقى - .אני נהנה להאזין למוזיקה' : [ 21 * 1000, 2 * 1000 ],
+  'My house is at the end of the street - .הבית שלי נמצא בקצה הרחוב' : [ 23.14 * 1000, 2.36 * 1000 ],
+  'جدتي لديها حساب على الفيسبوك - .הסבתא שלי יש חשבון פייסבוק' : [ 25.65 * 1000, 2.5 * 1000 ],
+  'Try it - .נסה את זה' : [ 28.25 * 1000, 0.9 * 1000 ],
+});
+
+// var s8 = addAudioSentances('s8', 's8', {
+//   'what are you doing these days? - מה אתה עושה בימים אלו?'  : [ 0 * 1000 , 2 * 1000],
+// });
+
 var s6 = addAudioSentances('s6', 's6', {
   'the smartest. - הכי חכם.': [ 0 * 1000 , 1.1 * 1000],
   'The biggest house. - הבית הגדול ביותר.': [ 1.1 * 1000 , 1.9 * 1000],
@@ -326,7 +353,7 @@ var s6 = addAudioSentances('s6', 's6', {
 
 var s7 = addAudioSentances('s7', 's7', {
   'go in circles - ללכת במעגלים.' : [ 0  * 1000, 1.5 * 1000],
-  'In the language of warriors to brag in the field. - בשפת הלוחמים להתברבר בשטח.' : [ 1.55  * 1000, 2.9 * 1000],
+  // 'In the language of warriors to brag in the field. - בשפת הלוחמים להתברבר בשטח.' : [ 1.55  * 1000, 2.9 * 1000],
   'You didn\'t even know what you were doing? . - כלל לא ידעת מה אתה עושה? .' : [ 4.5  * 1000, 1.9 * 1000],
   'the strongest man in the world. - האיש החזק בעולם.' : [ 6.5  * 1000, 1.9 * 1000],
   'I want ice cream. - בא לי גלידה. ' : [  8.4 * 1000, 1.1 * 1000],
@@ -343,7 +370,7 @@ var s7 = addAudioSentances('s7', 's7', {
   'go for a trip. - ללכת לטיול.' : [  23.3 * 1000, 1.39 * 1000],
   'I want to tell you something. - אני רוצה להגיד לך משהו.' : [ 24.7  * 1000, 2 * 1000],
   'What you want?. - מה אתה רוצה؟.' : [  26.8 * 1000, 1.2 * 1000],
-  'Don\'t make a deal. - אל תעשה עניין.' : [ 28  * 1000, 1.4 * 1000],
+  'Don\'t make a big deal. - אל תעשה עניין.' : [ 28  * 1000, 1.4 * 1000],
   'I had a headache so I took a pill. - היה לי כאב ראש אז לקחתי כדור.' : [ 29.46  * 1000, 2.54 * 1000],
   'what are you saying?. - מה אתה אומר?.' : [ 32  * 1000, 1.2 * 1000],
   'I want to be a doctor. - אני רוצה להיות רופא.' : [ 33.36 * 1000, 1.63 * 1000],
