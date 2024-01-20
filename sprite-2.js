@@ -315,9 +315,39 @@ function addAudio (name, spriteObjName, label, time = 1) {
 //   'The captain must not be replaced. - אסור להחליף את הקברניט.' : [ 17.3 * 1000, 2 * 1000 ],
 // });
 
+var s10 = addAudioSentances('s10', 's10', {
+  'ממשלה מושחתת - Corrupt government': [ 0 * 1000, 1.35 * 1000 ],
+  'סערת התרופות - عاصفة المخدرات': [ 1.4 * 1000, 1.42 * 1000 ],
+  'דמותו של מנהיג - شخصية القائد': [ 2.87 * 1000, 1.33 * 1000 ],
+  'בית ריק - بيت فارغ': [ 4.26 * 1000, 0.9 * 1000 ],
+  'נסה את זה לערב שלם - جربه لأمسية كاملة': [ 5.23 * 1000, 1.7 * 1000 ],
+  'לא יקרה שוב - Won\'t happen again': [ 7 * 1000, 1.3 * 1000 ],
+  'תפתח את החלון חם פה - Open the window (male)': [ 8.33 * 1000, 1.88 * 1000 ],
+  'הצבעים - The colors': [ 10.36 * 1000, .85 * 1000 ],
+  'נדבר על זה מחר בערב - We\'ll talk about it tomorrow night': [ 11.26 * 1000, 2 * 1000 ],
+  'אני כל כך רעב - I\'m so hungry': [ 13.34 * 1000, 1.32 * 1000 ],
+  'תמיד אני אומר לכם. - I always tell you (plural).': [ 14.8 * 1000, 1.33 * 1000 ],
+  'אני רוצה להיפרד לפני מותי - I want to say goodbye before I die': [ 16.2 * 1000, 1.95 * 1000 ],
+  'אני כל כך חולה אני רוצה לישון - I\'m so sick I want to sleep': [ 18.3 * 1000, 2.2 * 1000 ],
+  'תסבירי למה - explain why': [ 20.7 * 1000, 1.04 * 1000 ],
+  'בלי להסס - without hesitation': [ 21.8 * 1000, 1.1 * 1000 ],
+  'חייב להשתנות - must change': [ 23 * 1000, 1.2 * 1000 ],
+  'עם ביטוחים פרטיים - with private insurances': [ 24.3 * 1000, 1.4 * 1000 ],
+  'אתה לא יודע לאן אתה הולך - you don\'t know where you are going': [ 25.8 * 1000, 1.87 * 1000 ],
+  ' Proved now - הוכח עכשיו - ثبت الآن': [ 27.9 * 1000, 1 * 1000 ],
+  'אנחנו יודעים - نحن نعلم': [ 29 * 1000, 1 * 1000 ],
+  'לדבר על זה. - To talk about it': [ 30 * 1000, 1 * 1000 ],
+  'אנשים. - People': [ 31 * 1000, 0.72 * 1000 ],
+  'איך את יודעת - كيف علمتي بذلك ؟': [ 31.84 * 1000, 1 * 1000 ],
+  'איך אתה יודע - كيف علمت بذلك ؟': [ 32.92 * 1000, 1 * 1000 ],
+  'לחלוטין - تماما او بالزبط': [ 33.95 * 1000, 0.88 * 1000 ],
+});
+sentanceIndex = 1;
+
 var s9 = addAudioSentances('s9', 's9', {
   'Tell him not to forget to bring food - תגיד לו שלא ישכח להביא אוכל': [ 0 * 1000 , 2 * 1000],
 });
+sentanceIndex = 1;
 
 var s8 = addAudioSentances('s8', 's8', {
   'انا بأفضل حال - .שלומי מצויין' : [ 0 * 1000, 1.17 * 1000 ],
@@ -341,6 +371,7 @@ var s8 = addAudioSentances('s8', 's8', {
 // var s8 = addAudioSentances('s8', 's8', {
 //   'what are you doing these days? - מה אתה עושה בימים אלו?'  : [ 0 * 1000 , 2 * 1000],
 // });
+sentanceIndex = 1;
 
 var s6 = addAudioSentances('s6', 's6', {
   'the smartest. - הכי חכם.': [ 0 * 1000 , 1.1 * 1000],
@@ -350,6 +381,7 @@ var s6 = addAudioSentances('s6', 's6', {
   'Definately not. - ממש לא.': [ 5.9 * 1000 , 0.96 * 1000],
   'What do you think. - מה אתם חושבים.': [ 6.9 * 1000 , 1.4 * 1000],
 });
+sentanceIndex = 1;
 
 var s7 = addAudioSentances('s7', 's7', {
   'go in circles - ללכת במעגלים.' : [ 0  * 1000, 1.5 * 1000],
@@ -377,6 +409,7 @@ var s7 = addAudioSentances('s7', 's7', {
   'I wanted to give you a present. - רציתי לתת לך מתנה.' : [ 35  * 1000, 1.75 * 1000],
   'Are you planning to come? - אתה מתכנן לבוא؟.' : [  36.82 * 1000, 1.36 * 1000], 
 });
+sentanceIndex = 1;
 
 var s3 = addAudioSentances('s3', 's3', {
   'شو اخبارك ؟. - מה העניינים. ' : [ 0 * 1000, 1.16 * 1000 ],
@@ -392,6 +425,7 @@ var s3 = addAudioSentances('s3', 's3', {
   'What are you doing? - מה אתה עושה?' : [ 18.3 * 1000, 1 * 1000 ],
   'The captain must not be replaced. - אסור להחליף את הקברניט.' : [ 19.4 * 1000, 2.1 * 1000 ],
 });
+sentanceIndex = 1;
 
 var s4 = addAudioSentances('s4', 's4', {
   'This ice cream is really good. - הגלידה הזאת ממש טובה.': [ 0 * 1000, 1.95 * 1000 ],
@@ -407,11 +441,13 @@ var s4 = addAudioSentances('s4', 's4', {
   'I can fix your computer. - אני יכול לתקן לך את המחשב.': [ 21.4 * 1000, 2.33 * 1000 ],
   'you make a mess - אתה עושה בלאגן.': [ 23.8 * 1000, 1.6 * 1000 ],
 });
+sentanceIndex = 1;
 
 var s5 = addAudioSentances('biggest lier', 's5', {
   'The most liar in the world. - האיש הכי שַׁקְרָן בעולם.': [ 0 * 1000, 1.95 * 1000 ],
 });
 
+sentanceIndex = 1;
 
 
 var s1 = addAudioSentances('s1', 's1', {
@@ -424,6 +460,7 @@ var s1 = addAudioSentances('s1', 's1', {
   'מחר ירד גשם.  It will rain tomorrow': [7.58 * 1000, 1.57 * 1000],
   'האיש חותך עוף. The man cuts a chicken': [9.2 * 1000, 1.3 * 1000],
 });
+sentanceIndex = 1;
 
 var s2 = addAudioSentances('s2', 's2', {
   'לבטל את הפגישה. Cancel the meeting.': [0 * 1000, 1.23 * 1000],
