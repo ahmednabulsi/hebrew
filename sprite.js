@@ -667,7 +667,7 @@ var sprite_15 = addAudio('what do you mean', 'sprite_15', 'what do you mean למ
 var sprite_16 = addAudioSentances('mesc', 'sprite_16', {
   'He died for nothing הוא מת לחינם': [0, 1.04 * 1000],
   'Shoes Yahya נעליים של': [1.2 * 1000, 1.5 * 1000],
-  'Mesage ending. Thanks Friend חברה תודה': [3 * 1000, 1 * 1000],
+  'Message ending. Thanks Friend (female) חברה תודה': [3 * 1000, 1 * 1000],
 });
 var sprite_17 = addAudioSentances('love', 'sprite_17', {
   'I\'m kidding אני צוחק': [0, 1.04 * 1000],
@@ -1361,7 +1361,7 @@ function playAll500(sprits) {
   clearTimeout(Sprite.CurrentTimerId);
   Howler.stop();
   // shuffleArray(spritesArray);
-  playSprits([sprits], 0, 1000, 2);
+  playSprits([sprits], 0, 100, 1);
 }
 
 function playConversation(sprits) {
@@ -1378,9 +1378,9 @@ function playAll100(index) {
   Howler.stop();
   // shuffleArray(spritesArray);
   if (index) {
-    playSprits([spritesArray[index]], 0, 1000, 1);
+    playSprits([spritesArray[index]], 0, 200, 1);
   } else {
-    playSprits(spritesArray.slice(0, 4), 0, 1000, 1);
+    playSprits(spritesArray.slice(0, 4), 0, 200, 1);
   }
 }
 

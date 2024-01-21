@@ -367,10 +367,30 @@ var s8 = addAudioSentances('s8', 's8', {
   'جدتي لديها حساب على الفيسبوك - .הסבתא שלי יש חשבון פייסבוק' : [ 25.65 * 1000, 2.5 * 1000 ],
   'Try it - .נסה את זה' : [ 28.25 * 1000, 0.9 * 1000 ],
 });
+sentanceIndex = 1;
 
-// var s8 = addAudioSentances('s8', 's8', {
-//   'what are you doing these days? - מה אתה עושה בימים אלו?'  : [ 0 * 1000 , 2 * 1000],
-// });
+var s11 = addAudioSentances('s11', 's11', {
+  'בכמה אתה מוכר את מכונית. - How much are you selling the car for?': [18.72 * 1000, 1.84 * 1000],
+  'בכמה אתה קונה את זה?. - For how much do you buy it?': [20.77 * 1000, 1.44 * 1000],
+
+  'אתם בורחים מהאמת. - أنتم تهرب من الحقيقة': [0 * 1000, 1.34 * 1000],
+  'מה דעתך. - ما رأيك': [1.37 * 1000, 0.9 * 1000],
+  'בְּהֶחלֵט מסכימ. - Definitely agree': [2.3 * 1000, 1.3 * 1000],
+  'אני שמח לשמוע. - I\'m glad to hear': [3.67 * 1000, 1.3 * 1000],
+  'מה פתאום. - No way (you are kidding)': [5 * 1000, 0.9 * 1000],
+  'יהיה בסדר. - It will be OK': [5.9 * 1000, 1.2 * 1000],
+  'ללכת עם הזרם. - Go with the flow': [7.2 * 1000, 1.33 * 1000],
+  'קצת סבלנות. - A little patience': [8.6 * 1000, 1 * 1000],
+  'תשכח מזה. - Forget about it': [9.7 * 1000, 1 * 1000],
+  'סערה בכוס מים. - Making a big deal out of nothing (storm in a cup)': [10.74 * 1000, 1.5 * 1000],
+  'אתה עושה סערה בכוס מים. - Making a big deal out of nothing (storm in a cup)': [12.3 * 1000, 1.9 * 1000],
+  'כל דיבורים. - It’s all talk': [14.36 * 1000, 1 * 1000],
+  'השם ישמור. - لا سمح الله': [15.47 * 1000, 1.14 * 1000],
+  'בעזרת השם. - بعون ​​الله': [16.64 * 1000, 1.2 * 1000],
+  'לכ על זה. - go for it': [17.87 * 1000, 0.8 * 1000],
+  'בכמה קנית את זה?. - For how much did you buy it?': [22.38 * 1000, 1.4 * 1000],
+});
+
 sentanceIndex = 1;
 
 var s6 = addAudioSentances('s6', 's6', {
@@ -775,6 +795,15 @@ function playAllNew() {
   Howler.stop();
   // shuffleArray(spritesArray);
   playSprits(spritesArray.slice(0, spritesArray.length - 1), 0, 1500);
+}
+
+function playNew() {
+  currentIndex = undefined;
+  clearTimeout(playingTimerId)
+  clearTimeout(Sprite.CurrentTimerId);
+  Howler.stop();
+  // shuffleArray(spritesArray);
+  playSprits([s11], 0, 1500);
 }
 
 function playAllVerbs() {
