@@ -369,8 +369,8 @@ var s8 = addAudioSentances('s8', 's8', {
 });
 sentanceIndex = 1;
 
-var s11 = addAudioSentances('s11', 's11', {
-  'בכמה אתה מוכר את מכונית. - How much are you selling the car for?': [18.72 * 1000, 1.84 * 1000],
+var s11 = addAudioSentances('s11.1', 's11', {
+  'בכמה אתה מוכר את המכונית. - How much are you selling the car for?': [18.72 * 1000, 1.84 * 1000],
   'בכמה אתה קונה את זה?. - For how much do you buy it?': [20.77 * 1000, 1.44 * 1000],
 
   'אתם בורחים מהאמת. - أنتم تهرب من الحقيقة': [0 * 1000, 1.34 * 1000],
@@ -383,7 +383,7 @@ var s11 = addAudioSentances('s11', 's11', {
   'קצת סבלנות. - A little patience': [8.6 * 1000, 1 * 1000],
   'תשכח מזה. - Forget about it': [9.7 * 1000, 1 * 1000],
   'סערה בכוס מים. - Making a big deal out of nothing (storm in a cup)': [10.74 * 1000, 1.5 * 1000],
-  'אתה עושה סערה בכוס מים. - Making a big deal out of nothing (storm in a cup)': [12.3 * 1000, 1.9 * 1000],
+ // 'אתה עושה סערה בכוס מים. - Making a big deal out of nothing (storm in a cup)': [12.3 * 1000, 1.9 * 1000],
   'כל דיבורים. - It’s all talk': [14.36 * 1000, 1 * 1000],
   'השם ישמור. - لا سمح الله': [15.47 * 1000, 1.14 * 1000],
   'בעזרת השם. - بعون ​​الله': [16.64 * 1000, 1.2 * 1000],
