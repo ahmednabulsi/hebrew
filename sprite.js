@@ -1361,7 +1361,7 @@ function playAll500(sprits) {
   clearTimeout(Sprite.CurrentTimerId);
   Howler.stop();
   // shuffleArray(spritesArray);
-  playSprits([sprits], 0, 100, 1);
+  playSprits([sprits], 0, 1200, 2);
 }
 
 function playConversation(sprits) {
