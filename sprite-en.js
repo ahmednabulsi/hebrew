@@ -426,24 +426,7 @@ var en36 = addAudioSentances('Can you expand on that', 'Can you expand on that?'
 });
 
 
-var s1 = addAudioSentances('thanks', 's1', {
-  'Thanks very much': [1.94 * 1000, 3.46 * 1000],
-  'Thanks so much': [7 * 1000, 3.3 * 1000],
-  'Thanks a million for all your help': [12.3 * 1000, 5.16 * 1000],
-  'Please let me know if i can return the favor': [20.2 * 1000, 6.6 * 1000],
-  'I owe you one': [36.96 * 1000, 3 * 1000],
-  'I really appreciate it': [49.46 * 1000, 4 * 1000],
-  'Thanks so much, you\'re a star': [55 * 1000, 5.85 * 1000],
-  'What would i do without you': [70.42 * 1000, 4.32 * 1000],
-  'That\'s so nice of you or That\'s very thoughtful of you thanks': [90 * 1000, 6.2 * 1000],
 
-  'Formal - We are very grateful for the support you\'ve provided': [109.91 * 1000, 3.7 * 1000],
-  'Formal - Your support is greatly appreciated': [115.2 * 1000, 5.9 * 1000],
-  'Formal - I sincerely appreciate your assistance/advice/recommendation': [130 * 1000, 6.5 * 1000],
-  'Formal - I would like to express my personal gratitude for the support you provided': [155 * 1000, 5.75 * 1000],
-  'Formal - You\'ve been extremely helpful and the support you provide is highly appreciated': [162.5 * 1000, 11.5 * 1000],
-
-});
 
 var en1 = addAudioSentances('en1', 'en1', {
   'Thank you all for coming.': [0 * 1000, 1.52  * 1000],
@@ -499,6 +482,24 @@ var en5 = addAudioSentances('en5', 'en5', {
   'Now I would like to introduce Sim who is going to talk about.': [11.65 * 1000, 3  * 1000],
 });
 
+var s1 = addAudioSentances('thanks', 's1', {
+  'Thanks very much': [1.94 * 1000, 3.46 * 1000],
+  'Thanks so much': [7 * 1000, 3.3 * 1000],
+  'Thanks a million for all your help': [12.3 * 1000, 5.16 * 1000],
+  'Please let me know if i can return the favor': [20.2 * 1000, 6.6 * 1000],
+  'I owe you one': [36.96 * 1000, 3 * 1000],
+  'I really appreciate it': [49.46 * 1000, 4 * 1000],
+  'Thanks so much, you\'re a star': [55 * 1000, 5.85 * 1000],
+  'What would i do without you': [70.42 * 1000, 4.32 * 1000],
+  'That\'s so nice of you or That\'s very thoughtful of you thanks': [90 * 1000, 6.2 * 1000],
+
+  'Formal - We are very grateful for the support you\'ve provided': [109.91 * 1000, 3.7 * 1000],
+  'Formal - Your support is greatly appreciated': [115.2 * 1000, 5.9 * 1000],
+  'Formal - I sincerely appreciate your assistance/advice/recommendation': [130 * 1000, 6.5 * 1000],
+  'Formal - I would like to express my personal gratitude for the support you provided': [155 * 1000, 5.75 * 1000],
+  'Formal - You\'ve been extremely helpful and the support you provide is highly appreciated': [162.5 * 1000, 11.5 * 1000],
+
+});
 
 var playingTimerId;
 function playSprits(sprites, index, delay, repeats) {
@@ -608,7 +609,7 @@ function playAllNew() {
   clearTimeout(Sprite.CurrentTimerId);
   Howler.stop();
   // shuffleArray(spritesArray);
-  playSprits(spritesArray, 0, 500, 1);
+  playSprits(spritesArray, 0, 1000, 2);
 }
 
 
